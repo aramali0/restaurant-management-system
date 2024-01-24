@@ -1,0 +1,38 @@
+.sideBares{
+ background-color: var(--main-color); 
+ color: white; 
+ padding: 20px; 
+ width: 250px; 
+ height: 100vh;
+ margin: 0;
+}
+
+.heading {
+ font-size: 1.5em; 
+ margin-bottom: 20px; 
+}
+
+.list {
+ list-style-type: none; 
+ padding: 0;
+}
+
+.li{
+ margin-bottom: 10px; 
+}
+
+.navLink {
+ text-decoration: none; 
+ color: #fff; 
+ display: block; 
+ padding: 8px; 
+ border-radius: 4px; 
+}
+
+.navLink:hover {
+ background-color: var(--second-color);
+}
+
+.navLink:global(.active){
+ background-color: var(--second-color);
+}

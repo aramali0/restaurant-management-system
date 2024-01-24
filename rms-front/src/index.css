@@ -1,0 +1,16 @@
+:root{
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+ --main-color: #FF7B00;
+ --second-color: #FFC300;
+ --third-color: #FFD60A;
+ --fourth-color: #003566;
+ ---color-fifth: #001D3D;
+}
+
+body{
+ margin: 0;
+ padding: 0;
+}
+
