@@ -1,15 +1,17 @@
 .sideBares{
  background-color: var(--main-color); 
  color: white; 
- padding: 20px; 
  width: 250px; 
  height: 100vh;
  margin: 0;
 }
 
+
 .heading {
  font-size: 1.5em; 
  margin-bottom: 20px; 
+ padding:20px  0 0 20px;
+ cursor: pointer;
 }
 
 .list {
@@ -19,14 +21,18 @@
 
 .li{
  margin-bottom: 10px; 
+
 }
 
 .navLink {
  text-decoration: none; 
  color: #fff; 
  display: block; 
- padding: 8px; 
  border-radius: 4px; 
+ padding: 20px;
+ font-size: 20px;
+ font-weight: 700;
+
 }
 
 .navLink:hover {

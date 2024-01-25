@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from "./SideBare.module.css"
 import { NavLink,Link} from "react-router-dom"
 import { sideLinks } from '../../../constants'
@@ -10,7 +10,7 @@ function SideBare() {
       <ul className={styles.list}>
        {
         sideLinks.map((link,index) =>(
-          <li className={styles.li}>
+          <li key={index} className={styles.li}>
            <NavLink className={styles.navLink} key={index} to={link.id} >{link.title}</NavLink>
           </li>
         ))

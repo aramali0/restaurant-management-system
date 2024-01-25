@@ -1,0 +1,43 @@
+.reusable-form {
+ width: 80%;
+ margin: 0 auto;
+}
+
+label {
+ display: block;
+ margin-bottom: 8px;
+}
+
+label > input {
+ width: 100%;
+ padding: 8px;
+ margin-bottom: 16px;
+}
+
+select {
+ width: 100%;
+ padding: 8px;
+ margin-bottom: 16px;
+ border: 1px solid #ddd;
+ border-radius: 4px;
+ background-color: #fff;
+ font-size: 16px;
+}
+
+select option {
+ background-color: #fff;
+ color: #333;
+}
+
+button {
+ background-color: var(--main-color);
+ color: white;
+ padding: 10px 15px;
+ border: none;
+ border-radius: 4px;
+ cursor: pointer;
+}
+
+button:hover {
+ background-color: var(--second-color);
+}
