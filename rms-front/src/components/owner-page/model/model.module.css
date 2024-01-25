@@ -1,0 +1,29 @@
+.modalBackdrop {
+ position: fixed;
+ display: flex;
+ align-items: center;
+ justify-content: flex-start;
+ z-index: 1;
+ height: 100%;
+ width: 100%;
+ background-color: rgba(0, 0, 0, 0.6);
+ overflow: auto;
+}
+
+.modalContent {
+ width: 70%;
+ padding: 20px ;
+ background-color: var(--fourth-color);
+ position: relative; 
+}
+
+.modalCloseButton {
+ font-size: 1rem;
+ width: 20px;
+ display: flex;
+ justify-content: center;
+ position: absolute;
+ top: 0;
+ right: 0;
+ 
+}

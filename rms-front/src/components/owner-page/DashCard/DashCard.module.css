@@ -1,0 +1,31 @@
+.card{
+ display: flex;
+ flex-direction: column;
+ border: 1px solid var(--main-color);
+ height: 100%;
+ width: 100%;
+ padding: 10px;
+ border-radius: 10px;
+ box-sizing: border-box;
+}
+
+.ticket{
+ height: 25%;
+ border-bottom: 1px solid var(--second-color);
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+}
+
+.date{
+ font-weight: 900;
+ color: var(--main-color);
+}
+
+.value{
+ font-weight: 900;
+}
+
+.title{
+ border-bottom: 2px solid var(--second-color);
+}
