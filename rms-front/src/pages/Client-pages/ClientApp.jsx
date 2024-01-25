@@ -10,7 +10,7 @@ function AppClient() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<LayouClient></LayouClient>}>
-                    <Route index element={<HomePage></HomePage>}></Route>
+                    <Route path="/home" element={<HomePage></HomePage>}></Route>
                     <Route path="/contact" element={<ContactPage></ContactPage>}></Route>
                     <Route path="/about" element={<AboutPage></AboutPage>}></Route>
                     <Route path="/profile" element={<ProfilePage></ProfilePage>}></Route>
