@@ -1,0 +1,10 @@
+.img-container{
+    background-size: cover;
+    border-radius: 50%;
+    display: flex;
+}
+
+img{
+    border-radius: 50%;
+    margin: 0px;
+}
