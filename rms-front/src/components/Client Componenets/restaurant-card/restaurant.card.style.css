@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.rest-card{
+    background-color: white;
+    width: 300px;
+    min-width: 300px;
+    max-width: 300px;
+    margin: 20px 10px 20px 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+.cover-image-rest{
+    width: 100%;
+}
+
+.img-cover{
+    width: 100%;
+    background-size: cover;
+}
+.brand-image-rest{
+    width: 50px;
+    position: absolute;
+    border-radius: 20%;
+    left: 7%;
+    top: 60%;
+}
+
+.img-brand{
+    border: 3px solid white;
+    width: 100%;
+    border-radius: 20%;
+    background-size: cover;
+}

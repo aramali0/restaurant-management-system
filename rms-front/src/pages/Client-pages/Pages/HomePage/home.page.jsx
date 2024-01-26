@@ -1,6 +1,7 @@
 import { useState } from "react";
 import CategoryCard from "../../../../components/Client Componenets/category-card/category.card";
 import './home.style.css'
+import RestaurantCard from "../../../../components/Client Componenets/restaurant-card/restaurant.card";
 
 const basePathCat = "src/assets/client-assets/categories-images/"
 export default function HomePage() {
@@ -43,9 +44,17 @@ export default function HomePage() {
                                             <div>5</div> : undefined
         : 
         undefined}
-        <h1>Restaurants</h1>
         <div className="restaurant">
-            {/* //!Display all Restaurants Horizantly : */}
+            <div className="title">Restaurants</div>
+            <div className="restaurant-items">
+                <RestaurantCard 
+                    restaurantName="Shami restaurant" 
+                    restaurantDescription="Description for the restaurant " 
+                    restaurantRating={3.2}
+                    rrstaurantImage="src/assets/client-assets/restautant-images/rest-brand.jpg"
+                    restaurantCoverImage="src/assets/client-assets/restautant-images/rest-cover.jpg"
+                    />
+            </div>
         </div>
         <h1>Some Meals Randomly</h1>
         {/* //!Restaurants */}
