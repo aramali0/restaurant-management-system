@@ -16,7 +16,7 @@ nav{
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
     position: sticky;
     top: 0;
-    z-index: 999;
+    z-index: 1024;
 }
 
 .nav-items{
@@ -27,6 +27,7 @@ nav{
     display: flex;
     align-items: center;
     list-style: none;
+    transition: 0.3s ease-in-out;
 }
 .nav-item.active{
     background-color: #FFD60A;
@@ -36,14 +37,40 @@ nav{
 .nav-item:hover{
     background-color: #FFD60A;
     border-radius: 10px;
-    transition: 0.3s ease-in-out;
+    transform: scale(1.2);
 }
 
 .nav-link{
     position: relative;
-    
+    font-weight: 700;    
     margin: 5px;
     text-decoration: none;
     font-size: 20px;
     color: #001D3D;
+}
+
+.search-box{
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    height: 0.1rem;
+}
+
+.search-input{
+	border: none;
+	background-color: wheat;
+    height: 40px;
+    width: 240px;
+	outline: 0;
+    border-radius: 10px 0 0 10px;
+    padding: 10px ;
+}
+
+.search-button{
+    background-color: white;
+    height: 40px;
+    border-radius: 0 10px 10px 0;
+    cursor: pointer;
+    color: black;
+    padding-top: 9px;
 }
