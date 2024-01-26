@@ -2,6 +2,8 @@ import { useState } from "react";
 import CategoryCard from "../../../../components/Client Componenets/category-card/category.card";
 import './home.style.css'
 import RestaurantCard from "../../../../components/Client Componenets/restaurant-card/restaurant.card";
+import MealCard from "../../../../components/Client Componenets/meal-card/meal.card";
+import RestaurantType from "../../../../components/Client Componenets/resttype-card/restauranttype.card";
 
 const basePathCat = "src/assets/client-assets/categories-images/"
 export default function HomePage() {
@@ -44,9 +46,45 @@ export default function HomePage() {
                                             <div>5</div> : undefined
         : 
         undefined}
+        <h1 className="main-title">Restaurants</h1>
         <div className="restaurant">
-            <div className="title">Restaurants</div>
+            <div className="title">Popular</div>
             <div className="restaurant-items">
+                <RestaurantCard 
+                    restaurantName="Shami restaurant" 
+                    restaurantDescription="Description for the restaurant " 
+                    restaurantRating={3.2}
+                    rrstaurantImage="src/assets/client-assets/restautant-images/rest-brand.jpg"
+                    restaurantCoverImage="src/assets/client-assets/restautant-images/rest-cover.jpg"
+                    />
+                <RestaurantCard 
+                    restaurantName="Shami restaurant" 
+                    restaurantDescription="Description for the restaurant " 
+                    restaurantRating={3.2}
+                    rrstaurantImage="src/assets/client-assets/restautant-images/rest-brand.jpg"
+                    restaurantCoverImage="src/assets/client-assets/restautant-images/rest-cover.jpg"
+                    />
+                <RestaurantCard 
+                    restaurantName="Shami restaurant" 
+                    restaurantDescription="Description for the restaurant " 
+                    restaurantRating={3.2}
+                    rrstaurantImage="src/assets/client-assets/restautant-images/rest-brand.jpg"
+                    restaurantCoverImage="src/assets/client-assets/restautant-images/rest-cover.jpg"
+                    />
+                <RestaurantCard 
+                    restaurantName="Shami restaurant" 
+                    restaurantDescription="Description for the restaurant " 
+                    restaurantRating={3.2}
+                    rrstaurantImage="src/assets/client-assets/restautant-images/rest-brand.jpg"
+                    restaurantCoverImage="src/assets/client-assets/restautant-images/rest-cover.jpg"
+                    />
+                <RestaurantCard 
+                    restaurantName="Shami restaurant" 
+                    restaurantDescription="Description for the restaurant " 
+                    restaurantRating={3.2}
+                    rrstaurantImage="src/assets/client-assets/restautant-images/rest-brand.jpg"
+                    restaurantCoverImage="src/assets/client-assets/restautant-images/rest-cover.jpg"
+                    />
                 <RestaurantCard 
                     restaurantName="Shami restaurant" 
                     restaurantDescription="Description for the restaurant " 
@@ -56,8 +94,58 @@ export default function HomePage() {
                     />
             </div>
         </div>
-        <h1>Some Meals Randomly</h1>
-        {/* //!Restaurants */}
-        {/* //!Special For you (Some meals) */}
+        <div className="meals">
+            <div className="title">Speacial for you</div>
+            <div className="meals-items">
+                <MealCard 
+                    mealName="Back Star butguer"
+                    mealPrice="17$"
+                    mealRating={4.3}
+                    mealImage="src/assets/client-assets/restautant-images/meal1.jpg"
+                />
+                <MealCard 
+                    mealName="Back Star butguer"
+                    mealPrice="17$"
+                    mealRating={4.3}
+                    mealImage="src/assets/client-assets/restautant-images/meal1.jpg"
+                />
+                <MealCard 
+                    mealName="Back Star butguer"
+                    mealPrice="17$"
+                    mealRating={4.3}
+                    mealImage="src/assets/client-assets/restautant-images/meal1.jpg"
+                />
+                <MealCard 
+                    mealName="Back Star butguer"
+                    mealPrice="17$"
+                    mealRating={4.3}
+                    mealImage="src/assets/client-assets/restautant-images/meal1.jpg"
+                />
+                <MealCard 
+                    mealName="Back Star butguer"
+                    mealPrice="17$"
+                    mealRating={4.3}
+                    mealImage="src/assets/client-assets/restautant-images/meal1.jpg"
+                />
+                <MealCard 
+                    mealName="Back Star butguer"
+                    mealPrice="17$"
+                    mealRating={4.3}
+                    mealImage="src/assets/client-assets/restautant-images/meal1.jpg"
+                />
+                <MealCard 
+                    mealName="Back Star butguer"
+                    mealPrice="17$"
+                    mealRating={4.3}
+                    mealImage="src/assets/client-assets/restautant-images/meal1.jpg"
+                />
+                <MealCard 
+                    mealName="Back Star butguer"
+                    mealPrice="17$"
+                    mealRating={4.3}
+                    mealImage="src/assets/client-assets/restautant-images/meal1.jpg"
+                />
+            </div>
+        </div>
     </>  );
 }

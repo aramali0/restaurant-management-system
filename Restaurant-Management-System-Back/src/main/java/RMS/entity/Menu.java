@@ -16,7 +16,4 @@ public class Menu {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idMenu;
-
-
-
 }

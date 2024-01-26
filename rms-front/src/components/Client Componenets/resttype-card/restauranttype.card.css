@@ -1,0 +1,26 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.rest-type-card{
+    cursor: pointer;
+    font-size: 20px;
+    margin: 10px;
+    background-color: rgb(236, 229, 229);
+    padding: 10px;
+    width: 70px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.rest-type-card.active{
+    border: 2px solid black;
+}
+.rest-type-card:hover{
+    transform: scale(1.1);
+}
