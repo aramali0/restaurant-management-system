@@ -10,12 +10,14 @@ const basePathCat = "src/assets/client-assets/categories-images/"
 export default function HomePage() {
     const [categorySelected, setCategorySelected] = useState(0)
     const [restaurants, setRstaurants] = useState([])
+    const [restIsLoading, setRestIsLoading] = useState(true)
     const [meals, setMeals] = useState([])
 
     const getRestaurants = ()=>{
         fetch('http://localhost:8080/api/restaurants').then((resp)=>{
             resp.json().then((resp)=>{
-                console.log(resp);
+                setRstaurants(resp._embedded.restaurants)
+                setRestIsLoading(false);
             })
         })
     }
@@ -36,6 +38,19 @@ export default function HomePage() {
             console.log('prev ', prevState);
             return prevState === index ? 0 : index
         });
+    }
+    const displayRestaurantItem = ()=>{
+        return restaurants.map((rest, key)=>{
+            console.log(rest);
+            return <RestaurantCard 
+            key = {key}
+            restaurantName={rest.nomRestaurant} 
+            restaurantDescription={rest.description}
+            restaurantRating={3.2}
+            rrstaurantImage="src/assets/client-assets/restautant-images/rest-brand.jpg"
+            restaurantCoverImage="src/assets/client-assets/restautant-images/rest-cover.jpg"
+            />;
+        })
     }
     return (<>
     {console.log(categorySelected)}
@@ -64,48 +79,10 @@ export default function HomePage() {
         <div className="restaurant">
             <div className="title">Popular</div>
             <div className="restaurant-items">
-                <RestaurantCard 
-                    restaurantName="Shami restaurant" 
-                    restaurantDescription="Description for the restaurant " 
-                    restaurantRating={3.2}
-                    rrstaurantImage="src/assets/client-assets/restautant-images/rest-brand.jpg"
-                    restaurantCoverImage="src/assets/client-assets/restautant-images/rest-cover.jpg"
-                    />
-                <RestaurantCard 
-                    restaurantName="Shami restaurant" 
-                    restaurantDescription="Description for the restaurant " 
-                    restaurantRating={3.2}
-                    rrstaurantImage="src/assets/client-assets/restautant-images/rest-brand.jpg"
-                    restaurantCoverImage="src/assets/client-assets/restautant-images/rest-cover.jpg"
-                    />
-                <RestaurantCard 
-                    restaurantName="Shami restaurant" 
-                    restaurantDescription="Description for the restaurant " 
-                    restaurantRating={3.2}
-                    rrstaurantImage="src/assets/client-assets/restautant-images/rest-brand.jpg"
-                    restaurantCoverImage="src/assets/client-assets/restautant-images/rest-cover.jpg"
-                    />
-                <RestaurantCard 
-                    restaurantName="Shami restaurant" 
-                    restaurantDescription="Description for the restaurant " 
-                    restaurantRating={3.2}
-                    rrstaurantImage="src/assets/client-assets/restautant-images/rest-brand.jpg"
-                    restaurantCoverImage="src/assets/client-assets/restautant-images/rest-cover.jpg"
-                    />
-                <RestaurantCard 
-                    restaurantName="Shami restaurant" 
-                    restaurantDescription="Description for the restaurant " 
-                    restaurantRating={3.2}
-                    rrstaurantImage="src/assets/client-assets/restautant-images/rest-brand.jpg"
-                    restaurantCoverImage="src/assets/client-assets/restautant-images/rest-cover.jpg"
-                    />
-                <RestaurantCard 
-                    restaurantName="Shami restaurant" 
-                    restaurantDescription="Description for the restaurant " 
-                    restaurantRating={3.2}
-                    rrstaurantImage="src/assets/client-assets/restautant-images/rest-brand.jpg"
-                    restaurantCoverImage="src/assets/client-assets/restautant-images/rest-cover.jpg"
-                    />
+                {
+                    !restIsLoading ? "isLoading" : displayRestaurantItem()
+                }
+                
             </div>
         </div>
         <div className="meals">
