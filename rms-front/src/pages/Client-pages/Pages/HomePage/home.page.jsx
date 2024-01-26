@@ -11,6 +11,7 @@ export default function HomePage() {
     const [categorySelected, setCategorySelected] = useState(0)
     const [restaurants, setRstaurants] = useState([])
     const [restIsLoading, setRestIsLoading] = useState(true)
+    const [mealsLoading, setMealsLoading] = useState(true)
     const [meals, setMeals] = useState([])
 
     const getRestaurants = ()=>{
@@ -21,8 +22,17 @@ export default function HomePage() {
             })
         })
     }
+    const getMeals = ()=>{
+        fetch('http://localhost:8080/api/articles').then((resp)=>{
+            resp.json().then((resp)=>{
+                setMeals(resp._embedded.articles)
+                setMealsLoading(false)
+            })
+        })
+    }
     useEffect(()=>{
         getRestaurants();
+        getMeals();
     },[])
     const handleClick = (eO)=>{
         console.log(eO.currentTarget);
@@ -50,6 +60,16 @@ export default function HomePage() {
             rrstaurantImage="src/assets/client-assets/restautant-images/rest-brand.jpg"
             restaurantCoverImage="src/assets/client-assets/restautant-images/rest-cover.jpg"
             />;
+        })
+    }
+    const displayMealsItems = ()=>{
+        return meals.map((meal, key)=>{
+            return <MealCard 
+            mealName= {meal.name}
+            mealPrice={meal.prix +'$'}
+            mealRating={4.3}
+            mealImage="src/assets/client-assets/restautant-images/meal1.jpg"
+        />;
         })
     }
     return (<>
@@ -80,7 +100,7 @@ export default function HomePage() {
             <div className="title">Popular</div>
             <div className="restaurant-items">
                 {
-                    !restIsLoading ? "isLoading" : displayRestaurantItem()
+                    restIsLoading ? "Is Loading"  : displayRestaurantItem()
                 }
                 
             </div>
@@ -88,54 +108,9 @@ export default function HomePage() {
         <div className="meals">
             <div className="title">Speacial for you</div>
             <div className="meals-items">
-                <MealCard 
-                    mealName="Back Star butguer"
-                    mealPrice="17$"
-                    mealRating={4.3}
-                    mealImage="src/assets/client-assets/restautant-images/meal1.jpg"
-                />
-                <MealCard 
-                    mealName="Back Star butguer"
-                    mealPrice="17$"
-                    mealRating={4.3}
-                    mealImage="src/assets/client-assets/restautant-images/meal1.jpg"
-                />
-                <MealCard 
-                    mealName="Back Star butguer"
-                    mealPrice="17$"
-                    mealRating={4.3}
-                    mealImage="src/assets/client-assets/restautant-images/meal1.jpg"
-                />
-                <MealCard 
-                    mealName="Back Star butguer"
-                    mealPrice="17$"
-                    mealRating={4.3}
-                    mealImage="src/assets/client-assets/restautant-images/meal1.jpg"
-                />
-                <MealCard 
-                    mealName="Back Star butguer"
-                    mealPrice="17$"
-                    mealRating={4.3}
-                    mealImage="src/assets/client-assets/restautant-images/meal1.jpg"
-                />
-                <MealCard 
-                    mealName="Back Star butguer"
-                    mealPrice="17$"
-                    mealRating={4.3}
-                    mealImage="src/assets/client-assets/restautant-images/meal1.jpg"
-                />
-                <MealCard 
-                    mealName="Back Star butguer"
-                    mealPrice="17$"
-                    mealRating={4.3}
-                    mealImage="src/assets/client-assets/restautant-images/meal1.jpg"
-                />
-                <MealCard 
-                    mealName="Back Star butguer"
-                    mealPrice="17$"
-                    mealRating={4.3}
-                    mealImage="src/assets/client-assets/restautant-images/meal1.jpg"
-                />
+                {
+                    mealsLoading ? "Meals Loading" :  displayMealsItems()
+                }
             </div>
         </div>
     </>  );
