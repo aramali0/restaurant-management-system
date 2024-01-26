@@ -6,6 +6,7 @@
 
 
 .rest-card{
+    cursor: pointer;
     background-color: white;
     width: 300px;
     min-width: 300px;
@@ -15,6 +16,11 @@
     overflow: hidden;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
     position: relative;
+    transition: 0.3s;
+}
+
+.rest-card:hover{
+    transform: scale(1.1);
 }
 .cover-image-rest{
     width: 100%;
@@ -29,7 +35,7 @@
     position: absolute;
     border-radius: 20%;
     left: 7%;
-    top: 60%;
+    top: 50%;
 }
 
 .img-brand{
@@ -37,4 +43,24 @@
     width: 100%;
     border-radius: 20%;
     background-size: cover;
+}
+
+.info-rest{
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.rest-name{
+    font-size: 25px;
+    font-weight: 700;
+}
+.rest-desc{
+    font-size: 17px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.rest-rat{
+    display: flex;
+    margin-right: 10px;
 }

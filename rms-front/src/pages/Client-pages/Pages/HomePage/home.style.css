@@ -5,8 +5,9 @@
 }
 
 .categories-container {
+    margin-left: 20px;
+    margin-top: 20px;
     display: flex;
-    width: 100%;
     overflow-x: scroll;
     scroll-behavior: smooth;
 }
@@ -14,4 +15,40 @@
 
 .categories-container::-webkit-scrollbar {
     display: none;
+}
+
+.restaurant-items{
+    margin-left: 20px;
+    margin-top: 20px;
+    display: flex;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+}
+.restaurant-items::-webkit-scrollbar{
+    display: none;
+}
+
+.meals-items{
+    margin-left: 20px;
+    margin-top: 20px;
+    display: flex;
+    overflow: scroll;
+}
+.meals-items::-webkit-scrollbar{
+    display: none;
+}
+
+.main-title{
+    margin-left: 20px;
+}
+
+.restaurant .title{
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+
+.meals .title{
+    margin: 20px;
+    font-size: 25px;
 }

@@ -1,0 +1,51 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.meal-card{
+    width: 270px;
+    min-width: 270px;
+    background-color: white;
+    margin: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.meal-card:hover{
+    transform: scale(1.1);
+}
+.meal-img-src{
+    width: 270px;
+    height: 160px;
+}
+
+.meal-info{
+    margin: 10px;
+    padding: 10px;
+}
+
+.meal-rating-price{
+    display: flex;
+    justify-content: space-between;
+}
+.meal-rating{
+    display: flex;
+}
+.start-rat-meal{
+    color: #FFD60A;
+}
+.meal-name{
+    font-size: 21px;
+    font-weight: 800;
+}
+.meal-price{
+    font-weight: 700;
+    background-color: antiquewhite;
+    padding: 5px;
+    border-radius: 10px;
+}
