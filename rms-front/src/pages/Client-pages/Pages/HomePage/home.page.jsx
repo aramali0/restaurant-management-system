@@ -1,13 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CategoryCard from "../../../../components/Client Componenets/category-card/category.card";
 import './home.style.css'
 import RestaurantCard from "../../../../components/Client Componenets/restaurant-card/restaurant.card";
 import MealCard from "../../../../components/Client Componenets/meal-card/meal.card";
 import RestaurantType from "../../../../components/Client Componenets/resttype-card/restauranttype.card";
+import { BASE_URL } from "../../../../constants";
 
 const basePathCat = "src/assets/client-assets/categories-images/"
 export default function HomePage() {
     const [categorySelected, setCategorySelected] = useState(0)
+    const [restaurants, setRstaurants] = useState([])
+    const [meals, setMeals] = useState([])
+
+    const getRestaurants = ()=>{
+        fetch('http://localhost:8080/api/restaurants').then((resp)=>{
+            resp.json().then((resp)=>{
+                console.log(resp);
+            })
+        })
+    }
+    useEffect(()=>{
+        getRestaurants();
+    },[])
     const handleClick = (eO)=>{
         console.log(eO.currentTarget);
         eO.currentTarget.classList.toggle('active');

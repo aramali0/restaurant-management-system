@@ -8,5 +8,7 @@ public enum Categorie {
     CAFEE_SHOPS,
     DRINKS,
     BUFFET,
-
+    DESSERT,
+    ICECREAMS,
+    BREAKFATS,
 }
