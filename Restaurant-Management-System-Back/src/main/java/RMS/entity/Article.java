@@ -1,10 +1,13 @@
 package RMS.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@NoArgsConstructor
 public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,5 +17,14 @@ public class Article {
     private String description;
     private Categorie categorie;
     @ManyToOne
-    private Menu menu;
+    private Restaurant restaurant;
+
+    public Article(String name, double prix, String description, Categorie categorie,Restaurant restaurant)
+    {
+        this.name =name;
+        this.prix = prix;
+        this.description = description;
+        this.categorie = categorie;
+        this.restaurant = restaurant;
+    }
 }

@@ -1,13 +1,17 @@
 package RMS.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Data
+@NoArgsConstructor
 public class Restaurant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,6 +21,17 @@ public class Restaurant {
     private String brandImage ;
     @OneToMany(mappedBy = "restaurant")
     private List<ProprietaireRestu> proprietaires;
-    @OneToOne(mappedBy = "restaurant")
-    private Menu menu;
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "restaurant")
+    private List<Article> articles;
+
+
+    public Restaurant(String nomRestaurant, String description, String brandImage, List<ProprietaireRestu> proprietaires)
+    {
+        this.nomRestaurant = nomRestaurant;
+        this.description=description;
+        this.brandImage =brandImage;
+        this.proprietaires =proprietaires ;
+        this.articles = new ArrayList<>();
+
+    }
 }

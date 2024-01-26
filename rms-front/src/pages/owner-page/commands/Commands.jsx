@@ -1,7 +1,21 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './commands.module.css'
+import axios from 'axios';
 import Table from '../../../components/owner-page/Table/Table'
+import { BASE_URL } from '../../../constants';
 function Commands() {
+
+  useEffect(() =>{
+    axios.get("http://localhost:8080/api/commandes")
+    .then(response => {
+      console.log(response.data);
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+    });
+  },[])
+
+
   const [page,setPage] = useState(0);
   const [meal,setMeal] = useState("")
   const [tableData, setTableData] = useState([
