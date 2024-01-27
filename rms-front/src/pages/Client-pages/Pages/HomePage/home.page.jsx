@@ -3,8 +3,10 @@ import CategoryCard from "../../../../components/Client Componenets/category-car
 import './home.style.css'
 import RestaurantCard from "../../../../components/Client Componenets/restaurant-card/restaurant.card";
 import MealCard from "../../../../components/Client Componenets/meal-card/meal.card";
-import RestaurantType from "../../../../components/Client Componenets/resttype-card/restauranttype.card";
-import { BASE_URL } from "../../../../constants";
+import {CATEGORIES } from "../../../../constants";
+
+
+const categoriesColors = ["#a7f6b4","#f6c67e", "#e3a1a2", "#c69ee4","#acc9e7"]
 
 const basePathCat = "src/assets/client-assets/categories-images/"
 export default function HomePage() {
@@ -35,23 +37,19 @@ export default function HomePage() {
         getMeals();
     },[])
     const handleClick = (eO)=>{
-        console.log(eO.currentTarget);
         eO.currentTarget.classList.toggle('active');
         const cards = document.querySelectorAll('.card');
         cards.forEach((e)=>{
-            console.log(e);
             eO.currentTarget !== e ?  e.classList.remove('active'): undefined
         })
     }
     const handleCategoryClicked = (index)=>{
         setCategorySelected(prevState =>{
-            console.log('prev ', prevState);
             return prevState === index ? 0 : index
         });
     }
     const displayRestaurantItem = ()=>{
         return restaurants.map((rest, key)=>{
-            console.log(rest);
             return <RestaurantCard 
             key = {key}
             restaurantName={rest.nomRestaurant} 
@@ -72,29 +70,34 @@ export default function HomePage() {
         />;
         })
     }
+    const displaCategiries = ()=>{
+        var index = -1;
+        return CATEGORIES.map((cat,key)=>{
+            index >= categoriesColors.length ? index = 0 : undefined;
+            index = index+1
+            
+            return <div onClick={()=>handleCategoryClicked(key+1)}>
+                    <CategoryCard  
+                        onTap={handleClick} 
+                        categoryName={cat}
+                        color={index<categoriesColors.length && index>=0 ?  categoriesColors[index] : categoriesColors[0]} 
+                        itemCount={3} 
+                        imageUrl={basePathCat + "cat1.png"}  
+                        />
+                </div>
+        })
+    }
     return (<>
-    {console.log(categorySelected)}
         <div className="categories-container">
-            <div onClick={()=>handleCategoryClicked(1)}><CategoryCard  onTap={handleClick} categoryName="Fast food" color={"#a7f6b4"}  itemCount={3} imageUrl={basePathCat + "cat1.png"}  /></div>
-            <div onClick={()=>handleCategoryClicked(2)}><CategoryCard  onTap={handleClick} categoryName="Breakfast" color={"#f6c67e"}  itemCount={17} imageUrl={basePathCat + "cat2.png"}  /></div>
-            <div onClick={()=>handleCategoryClicked(3)}><CategoryCard  onTap={handleClick} categoryName="Dessert" color={"#e3a1a2"}  itemCount={10} imageUrl={basePathCat + "cat3.png"}  /></div>
-            <div onClick={()=>handleCategoryClicked(4)}><CategoryCard  onTap={handleClick} categoryName="Drinks" color={"#c69ee4"}  itemCount={4} imageUrl={basePathCat + "cat4.png"}  /></div>
-            <div onClick={()=>handleCategoryClicked(5)}><CategoryCard  onTap={handleClick} categoryName="Ice Creams" color={"#acc9e7"}  itemCount={23} imageUrl={basePathCat + "cat2.png"}  /></div>
+            {
+                displaCategiries()
+            }
         </div>
         {
-        categorySelected!==0 ?  
-            categorySelected === 1 ? 
-                <div>1</div> : 
-                    categorySelected === 2 ? 
-                    <div>2</div> : 
-                        categorySelected===3 ? 
-                            <div>3</div> : 
-                                categorySelected === 4 ? 
-                                    <div>4</div> : 
-                                        categorySelected === 5 ? 
-                                            <div>5</div> : undefined
-        : 
-        undefined}
+            CATEGORIES.map((cat,index)=>{
+                return categorySelected!==0 && categorySelected ===index+1 ? <div>{cat}</div> : undefined
+            })
+    }
         <h1 className="main-title">Restaurants</h1>
         <div className="restaurant">
             <div className="title">Popular</div>

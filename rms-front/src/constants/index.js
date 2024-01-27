@@ -19,15 +19,15 @@ export const sideLinks = [
 
 const CATEGORIES = [
   "FAST_FOOD",
+  "BREAKFATS",
+  "ICECREAMS",
+  "DESSERT",
+  "DRINKS",
   "CASUAL",
   "FAST_CASUAL",
   "FINE_DINING",
   "CAFEE_SHOPS",
-  "DRINKS",
   "BUFFET",
-  "DESSERT",
-  "ICECREAMS",
-  "BREAKFATS",
 ];
 
 const BASE_URL = "http://localhost:8080/api/";
