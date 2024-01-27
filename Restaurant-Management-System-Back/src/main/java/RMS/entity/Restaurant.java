@@ -26,13 +26,14 @@ public class Restaurant {
     private int rating;
 
 
-    public Restaurant(String nomRestaurant, String description, String brandImage, List<ProprietaireRestu> proprietaires)
+    public Restaurant(String nomRestaurant, String description, String brandImage, List<ProprietaireRestu> proprietaires, int rating)
     {
         this.nomRestaurant = nomRestaurant;
         this.description=description;
         this.brandImage =brandImage;
         this.proprietaires =proprietaires ;
         this.articles = new ArrayList<>();
+        this.rating = rating;
 
     }
 }

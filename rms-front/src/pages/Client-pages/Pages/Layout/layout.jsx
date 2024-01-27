@@ -8,12 +8,12 @@ export const Context = React.createContext();
 
 function LayouClient() {
     
-    const [index,incremntIndex] = useState(0)
+    const [index,incremntIndex] = useState(0);
     console.log("Render has been did....");
     const handleSubmit = (e)=>{
         e.preventDefault();
     }
-    return ( 
+    return (
     <Context.Provider value={[index, incremntIndex]} >
     <>
         <nav>

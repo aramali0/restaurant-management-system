@@ -47,31 +47,31 @@ public class RestaurantManagementSystemApplication implements Runnable {
 		ArrayList<ProprietaireRestu> proprietaireRestus = new ArrayList<>();
 		proprietaireRestus.add(p1);
 
-		Restaurant restaurant = new Restaurant("Mc","fast food","later",proprietaireRestus);
-		Restaurant restaurant2 = new Restaurant("Gourmet Grove Bistro","fast food","later",proprietaireRestus);
-		Restaurant restaurant3 = new Restaurant("Urban Harvest Kitchen","fast food","later",proprietaireRestus);
-		Restaurant restaurant4 = new Restaurant("Culinary Canvas Cafe","fast food","later",proprietaireRestus);
+		Restaurant restaurant = new Restaurant("Mc","fast food","later",proprietaireRestus, 4);
+		Restaurant restaurant2 = new Restaurant("Gourmet Grove Bistro","fast food","later",proprietaireRestus,7);
+		Restaurant restaurant3 = new Restaurant("Urban Harvest Kitchen","fast food","later",proprietaireRestus,8);
+		Restaurant restaurant4 = new Restaurant("Culinary Canvas Cafe","fast food","later",proprietaireRestus,9);
 
 		restaurantDAO.save(restaurant);
 		restaurantDAO.save(restaurant2);
 		restaurantDAO.save(restaurant3);
 		restaurantDAO.save(restaurant4);
 
-		Article article1 = new Article("sandwich",80,"kkkkkkkkk",Categorie.FAST_FOOD,restaurant);
-		Article article2 = new Article("Pizza",10,"kkkkkkkkk",Categorie.FAST_FOOD,restaurant2);
-		Article article3 = new Article("Tacos",20,"kkkkkkkkk",Categorie.FAST_FOOD,restaurant);
+		Article article1 = new Article("sandwich",80,"kkkkkkkkk",Categorie.FAST_FOOD,restaurant,3);
+		Article article2 = new Article("Pizza",10,"kkkkkkkkk",Categorie.FAST_FOOD,restaurant2,4);
+		Article article3 = new Article("Tacos",20,"kkkkkkkkk",Categorie.FAST_FOOD,restaurant,6);
 
-		Article article4 = new Article("Sunrise Scramble Delight",12,"kkkkkkkkk",Categorie.ICECREAMS,restaurant);
-		Article article5 = new Article("Pancake Paradise Platter",102,"kkkkkkkkk",Categorie.ICECREAMS,restaurant2);
-		Article article6 = new Article("Berry Bliss Smoothie Bowl",17,"kkkkkkkkk",Categorie.ICECREAMS,restaurant3);
+		Article article4 = new Article("Sunrise Scramble Delight",12,"kkkkkkkkk",Categorie.ICECREAMS,restaurant,8);
+		Article article5 = new Article("Pancake Paradise Platter",102,"kkkkkkkkk",Categorie.ICECREAMS,restaurant2,9);
+		Article article6 = new Article("Berry Bliss Smoothie Bowl",17,"kkkkkkkkk",Categorie.ICECREAMS,restaurant3,9);
 
-		Article article7 = new Article("Midnight Mocha Madness",22,"kkkkkkkkk",Categorie.BREAKFATS,restaurant4);
-		Article article8 = new Article("Strawberry Swirl Spectacle",23,"kkkkkkkkk",Categorie.BREAKFATS,restaurant);
-		Article article9 = new Article("Pistachio Perfection Parade",10,"kkkkkkkkk",Categorie.BREAKFATS,restaurant3);
+		Article article7 = new Article("Midnight Mocha Madness",22,"kkkkkkkkk",Categorie.BREAKFATS,restaurant4,1);
+		Article article8 = new Article("Strawberry Swirl Spectacle",23,"kkkkkkkkk",Categorie.BREAKFATS,restaurant,8);
+		Article article9 = new Article("Pistachio Perfection Parade",10,"kkkkkkkkk",Categorie.BREAKFATS,restaurant3,9);
 
-		Article article10 = new Article("Mango Tango Mocktail",7,"kkkkkkkkk",Categorie.DRINKS,restaurant2);
-		Article article11 = new Article("Blueberry Basil Breeze",8,"kkkkkkkkk",Categorie.DRINKS,restaurant3);
-		Article article12 = new Article("Citrus Splash Refresher",2,"kkkkkkkkk",Categorie.DRINKS,restaurant4);
+		Article article10 = new Article("Mango Tango Mocktail",7,"kkkkkkkkk",Categorie.DRINKS,restaurant2,4);
+		Article article11 = new Article("Blueberry Basil Breeze",8,"kkkkkkkkk",Categorie.DRINKS,restaurant3,1);
+		Article article12 = new Article("Citrus Splash Refresher",2,"kkkkkkkkk",Categorie.DRINKS,restaurant4,4);
 		articleDAO.save(article1);
 		articleDAO.save(article2);
 		articleDAO.save(article3);
