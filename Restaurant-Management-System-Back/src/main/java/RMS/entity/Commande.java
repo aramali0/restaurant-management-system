@@ -16,16 +16,18 @@ public class Commande {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idCommande;
     private Date date;
+    private String status;
     @OneToMany
     private List<Article> articles;
     @ManyToOne
     private Client client;
 
-    public Commande( Date date, Client client,List<Article> articles)
+    public Commande( Date date, Client client,List<Article> articles,String status)
     {
         this.date = date;
         this.client = client;
         this.articles = articles;
+        this.status = status;
     }
 
 }

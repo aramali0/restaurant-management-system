@@ -34,15 +34,23 @@ public class RestaurantManagementSystemApplication implements Runnable {
 	public void run() {
 		ProprietaireRestu p1 = new ProprietaireRestu("hamza","hamza@gmail.com","123","0605040303",200);
 		Client c1 = new Client("simo","simo@gmail.com","123","0605040303","2 pk");
+		Client c6 = new Client("simo1","simo@gmail.com","123","0605040303","2 pk");
+		Client c7 = new Client("simo2","simo@gmail.com","123","0605040303","2 pk");
+		Client c8 = new Client("simo3","simo@gmail.com","123","0605040303","2 pk");
 		Client c2 = new Client("otmane","otmane@gmail.com","123","0605040303","uld 90");
 		Client c3 = new Client("idrissi","idrissi@gmail.com","123","0605040303","04");
 		Client c4 = new Client("hajar","hajar@gmail.com","123","0605040303","sm");
+		Client c5 = new Client("reem","reem@gmail.com","123","900990909","04");
 
 		pDAO.save(p1);
 		clientDAO.save(c2);
 		clientDAO.save(c3);
 		clientDAO.save(c4);
 		clientDAO.save(c1);
+		clientDAO.save(c5);
+		clientDAO.save(c6);
+		clientDAO.save(c7);
+		clientDAO.save(c8);
 
 		ArrayList<ProprietaireRestu> proprietaireRestus = new ArrayList<>();
 		proprietaireRestus.add(p1);
@@ -86,17 +94,41 @@ public class RestaurantManagementSystemApplication implements Runnable {
 		articleDAO.save(article12);
 
 
-		ArrayList<Article> articles = new ArrayList<>();
-		articles.add(article1);
-		articles.add(article2);
-		articles.add(article3);
+		ArrayList<Article> articles1 = new ArrayList<>();
+		ArrayList<Article> articles2 = new ArrayList<>();
+		ArrayList<Article> articles3 = new ArrayList<>();
+		ArrayList<Article> articles4 = new ArrayList<>();
+		ArrayList<Article> articles5 = new ArrayList<>();
+		ArrayList<Article> articles6 = new ArrayList<>();
+		articles1.add(article1);
+		articles1.add(article2);
+		articles2.add(article3);
+		articles2.add(article4);
+		articles3.add(article5);
+		articles3.add(article6);
+		articles4.add(article7);
+		articles4.add(article8);
+		articles5.add(article9);
+		articles5.add(article10);
+		articles6.add(article11);
+		articles6.add(article12);
 
 
 
-		Commande commande1 = new Commande(new Date(),c1,articles);
+		Commande commande1 = new Commande(new Date(),c1,articles1,"Pending");
+		Commande commande2 = new Commande(new Date(),c2,articles2,"Delevred");
+		Commande commande3 = new Commande(new Date(),c3,articles3,"Delevred");
+		Commande commande4 = new Commande(new Date(),c4,articles4,"Delevred");
+		Commande commande5 = new Commande(new Date(),c1,articles5,"Pending");
+		Commande commande6 = new Commande(new Date(),c2,articles6,"Pending");
 
 
 		commandeDAO.save(commande1);
+		commandeDAO.save(commande2);
+		commandeDAO.save(commande3);
+		commandeDAO.save(commande4);
+		commandeDAO.save(commande5);
+		commandeDAO.save(commande6);
 
 	}
 }

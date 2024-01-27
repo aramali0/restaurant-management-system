@@ -12,6 +12,7 @@
  display: flex;
  border-bottom: 2px solid var(--second-color);
  height: 20%;
+ cursor: pointer;
 }
 
 .cell {
@@ -21,4 +22,6 @@
 .row:hover{
  background-color: #002449;
 }
+
+
 
