@@ -18,6 +18,7 @@ public class Article {
     private Categorie categorie;
     @ManyToOne
     private Restaurant restaurant;
+    private int rating;
 
     public Article(String name, double prix, String description, Categorie categorie,Restaurant restaurant)
     {

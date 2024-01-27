@@ -23,6 +23,7 @@ public class Restaurant {
     private List<ProprietaireRestu> proprietaires;
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "restaurant")
     private List<Article> articles;
+    private int rating;
 
 
     public Restaurant(String nomRestaurant, String description, String brandImage, List<ProprietaireRestu> proprietaires)
