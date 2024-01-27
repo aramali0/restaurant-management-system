@@ -1,0 +1,21 @@
+.container{
+ display: flex;
+ flex-direction: column;
+ color: black;
+}
+
+.name{
+ color: white;
+ font-size: larger;
+
+}
+
+.name > span{
+ font-weight: 900;
+ font-size: 25px;
+}
+
+.body{
+ display: flex;
+ flex-direction: row;
+} 

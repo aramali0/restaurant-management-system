@@ -4,6 +4,11 @@ import DashBoard from './pages/owner-page/dashboard/DashBoard'
 import Commands from './pages/owner-page/commands/Commands'
 import Meals from './pages/owner-page/meals/Meals'
 import Clients from './pages/owner-page/clients/Clients'
+import LayouClient from './pages/Client-pages/Pages/Layout/layout'
+import HomePage from './pages/Client-pages/Pages/HomePage/home.page'
+import ContactPage from './pages/Client-pages/Pages/ContactPage/contact.page'
+import AboutPage from './pages/Client-pages/Pages/AboutPage/about.page'
+import ProfilePage from './pages/Client-pages/Pages/ProfilePage/profile.lpage'
 
 
 function App() {
@@ -12,6 +17,13 @@ function App() {
     <>
        <BrowserRouter >
           <Routes>
+          <Route path="/" element={<LayouClient></LayouClient>}>
+              <Route index element={<HomePage></HomePage>}></Route>
+              <Route path="/home" element={<HomePage></HomePage>}></Route>
+              <Route path="/contact" element={<ContactPage></ContactPage>}></Route>
+              <Route path="/about" element={<AboutPage></AboutPage>}></Route>
+              <Route path="/profile" element={<ProfilePage></ProfilePage>}></Route>
+            </Route>
             <Route path="owner" element={<Home/>}>
               <Route index element={<DashBoard/>} />
               <Route path='dashBoard' element={<DashBoard/>}/>
