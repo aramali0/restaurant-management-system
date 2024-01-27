@@ -2,13 +2,22 @@ import { Link, Outlet, useLocation } from "react-router-dom";
 import { IoSearch } from "react-icons/io5";
 import  './layout.style.css';
 import ProfileItem from "../../../../components/Client Componenets/prifile item/profile.item";
+import React, { useState } from "react";
+
+export const Context = React.createContext();
+
 function LayouClient() {
-    const location = useLocation();
+    
+    const [index,incremntIndex] = useState(0);
+    console.log("Render has been did....");
     const handleSubmit = (e)=>{
         e.preventDefault();
     }
-    return ( <>
+    return (
+    <Context.Provider value={[index, incremntIndex]} >
+    <>
         <nav>
+            <div>{index}</div>
             <div className="logo"> <img width="60" src="src/assets/client-assets/logo.png" alt="logo" /> </div>
             <div className="search-box">
                 <form onSubmit={handleSubmit}>
@@ -26,7 +35,7 @@ function LayouClient() {
         <div>
             <Outlet></Outlet>
         </div>
-    </> );
+    </></Context.Provider> );
 }
 
 export default LayouClient;
