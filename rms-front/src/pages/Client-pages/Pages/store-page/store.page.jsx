@@ -8,7 +8,7 @@ function StorePage() {
         <div>
             <h2>Store name :{restaurant.nomRestaurant} </h2>
             <h2>Store description :{restaurant.description} </h2>
-            <h2>rating : 3.2</h2>
+            <h2>rating : {restaurant.rating}</h2>
         </div>
     </> );
 }
