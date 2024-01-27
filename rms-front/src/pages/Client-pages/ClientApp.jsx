@@ -6,6 +6,7 @@ import AboutPage from "./Pages/AboutPage/about.page";
 import ProfilePage from "./Pages/ProfilePage/profile.lpage";
 import MealDetails from "./Pages/mealdetails/mealdetails.page";
 import StorePage from "./Pages/store-page/store.page";
+import { useState } from "react";
 
 function AppClient() {
     return ( <>
@@ -13,7 +14,7 @@ function AppClient() {
             <Routes>
                 <Route path="/" element={<LayouClient></LayouClient>}>
                     <Route path="/home" element={<HomePage></HomePage>}></Route>
-                    <Route path="/detailspage" element={<MealDetails></MealDetails>}></Route>
+                    <Route path="/detailspage"  element={<MealDetails></MealDetails>}></Route>
                     <Route path="/store-page" element={<StorePage></StorePage>}></Route>
                     <Route path="/contact" element={<ContactPage></ContactPage>}></Route>
                     <Route path="/about" element={<AboutPage></AboutPage>}></Route>
