@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -19,8 +21,8 @@ public class Article {
     private int rating;
     @ManyToOne
     private Restaurant restaurant;
-
-
+    @ManyToMany(cascade = CascadeType.ALL)
+    private List<Panier> paniers;
     public Article(String name, double prix, String description, Categorie categorie,Restaurant restaurant, int rating)
     {
         this.name =name;

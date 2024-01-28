@@ -23,6 +23,8 @@ public class RestaurantManagementSystemApplication implements Runnable {
 	ProprietaireRestaurantDAO pDAO;
 	@Autowired
 	CommandeDAO commandeDAO;
+	@Autowired
+	PanierDAO panierDAO;
 
 	@Autowired
 	ArticleDAO articleDAO;
@@ -94,6 +96,7 @@ public class RestaurantManagementSystemApplication implements Runnable {
 		articleDAO.save(article12);
 
 
+
 		ArrayList<Article> articles1 = new ArrayList<>();
 		ArrayList<Article> articles2 = new ArrayList<>();
 		ArrayList<Article> articles3 = new ArrayList<>();
@@ -114,6 +117,11 @@ public class RestaurantManagementSystemApplication implements Runnable {
 		articles6.add(article12);
 
 
+//		Panier panier1 = new Panier(1L,10 ,c1, articles1);
+//		Panier panier2 = new Panier(1L,15 ,c2, articles2);
+//
+//		panierDAO.save(panier1);
+//		panierDAO.save(panier2);
 
 		Commande commande1 = new Commande(new Date(),c1,articles1,"Pending");
 		Commande commande2 = new Commande(new Date(),c2,articles2,"Delevred");
