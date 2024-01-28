@@ -11,7 +11,7 @@ function MealCard({meal, mealImage, key}) {
             <div className="meal-rating-price">
                 <div className="meal-price">{meal.prix + " $"}</div>
                 <div className="meal-rating">
-                    <p className="rating">{4.5}</p>
+                    <p className="rating">{meal.rating}</p>
                     <FaStar className="start-rat-meal" />
                 </div>
             </div>

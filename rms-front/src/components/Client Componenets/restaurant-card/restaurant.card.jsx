@@ -12,11 +12,10 @@ function RestaurantCard({restaurant,rrstaurantImage,restaurantCoverImage, restau
                 <div className='rest-desc'>
                     <p>{restaurant.description}</p>
                     <div className='rest-rat'>
-                        <p>{restaurantRating}</p>
+                        <p>{restaurant.rating}</p>
                         <FaStar style={{color : '#FFD60A'}}/>
                     </div>
                 </div>
-                
             </div>
         </div>
         </div> );

@@ -10,7 +10,7 @@ function StorePage() {
             <h2>Store description :{restaurant.description} </h2>
             <h2>rating : {restaurant.rating}</h2>
         </div>
-    </> );
+    </>);
 }
 
 export default StorePage;
