@@ -1,0 +1,25 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.category-item{
+    cursor: pointer;
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: rgba(128, 128, 128, 0.321);
+    color: black;
+    border-radius: 30px;
+    font-weight: 700;
+    transition: 0.4s;
+}
+
+.category-item.active{
+    color: black;
+    background-color: #FF7B00;
+}
+.category-item:hover{
+    color: black;
+    background-color: #FF7B00;
+}
