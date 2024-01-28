@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.Date;
@@ -21,5 +22,7 @@ public interface CommandeDAO extends JpaRepository<Commande, Long> {
     Page<Commande> findCommandesByRestaurantId(@Param("restaurantId") Long restaurantId, Pageable pageable);
 
     @Query("SELECT c FROM Commande c WHERE c.date BETWEEN :startDate AND :endDate")
-    List<Commande> findCommandesByDateRange(@Param("startDate") Date startDate, @Param("endDate") Date endDate);
-}
+    List<Commande> findCommandesByDateRange(
+            @Param("startDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date startDate,
+            @Param("endDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date endDate
+    );}

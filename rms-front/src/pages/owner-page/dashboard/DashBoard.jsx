@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import styles from './dashBoard.module.css';
 import DashCard from '../../../components/owner-page/DashCard/DashCard';
-
-const BASE_URL = 'http://localhost:8080/api/';
+import { BASE_URL } from '../../../constants';
 
 function DashBoard() {
   const [orders, setOrders] = useState([
@@ -20,45 +19,44 @@ function DashBoard() {
     { time: 'This Month', value: 0 },
   ]);
 
-  const fetchCommandesByDateRange = async (startDate, endDate) => {
-    try {
-      const response = await axios.get(
-        `${BASE_URL}commandes/findByDateRange?startDate=${startDate}&endDate=${endDate}`
-      );
-      return response.data.length; // Assuming you want the count of commandes
-    } catch (error) {
-      console.error('Error fetching commandes:', error);
-      throw error;
-    }
-  };
-
-  const updateDataForDateRange = async (updateFunction, startDate, endDate) => {
-    try {
-      const count = await fetchCommandesByDateRange(startDate, endDate);
-      setOrders((prevOrders) => updateFunction(prevOrders, count));
-    } catch (error) {
-      console.error('Error updating data:', error);
-    }
-  };
-
-  const updateOrders = async () => {
-    await updateDataForDateRange((prevOrders, count) => [
-      { time: 'Today', value: count },
-      ...prevOrders.slice(1), // Keep Yesterday, This Week, This Month
-    ], '28/01/2024', '28/01/2024');
-
-    await updateDataForDateRange((prevOrders, count) => [
-      ...prevOrders.slice(0, 1), // Keep Today
-      { time: 'Yesterday', value: count },
-      ...prevOrders.slice(2), // Keep This Week, This Month
-    ], '27/01/2024', '27/01/2024');
-
-    // Repeat the pattern for other time ranges...
-  };
+  const [commandes, setCommandes] = useState([]);
 
   useEffect(() => {
-    updateOrders();
-    // Update earnings in a similar way if needed
+    axios.get(`${BASE_URL}commandes/search/findCommandesByRestaurantId?restaurantId=1`)
+      .then(response => {
+        const commandesData = response.data._embedded.commandes;
+
+        const today = new Date().toISOString().split('T')[0];
+        const yesterday = new Date(new Date().setDate(new Date().getDate() - 1)).toISOString().split('T')[0];
+        const thisWeek = ''; // Add logic to get the start date of the week
+        const thisMonth = new Date().toISOString().split('-').slice(0, 2).join('-');
+
+        const todayCommandes = commandesData.filter(commande => commande.date.includes(today));
+        const yesterdayCommandes = commandesData.filter(commande => commande.date.includes(yesterday));
+        const thisWeekCommandes = commandesData.filter(commande => commande.date.includes(thisWeek));
+        const thisMonthCommandes = commandesData.filter(commande => commande.date.includes(thisMonth));
+
+        const todayTotalPrice = todayCommandes.reduce((total, commande) => total + commande.totalPrix, 0);
+        const yesterdayTotalPrice = yesterdayCommandes.reduce((total, commande) => total + commande.totalPrix, 0);
+        const thisWeekTotalPrice = thisWeekCommandes.reduce((total, commande) => total + commande.totalPrix, 0);
+        const thisMonthTotalPrice = thisMonthCommandes.reduce((total, commande) => total + commande.totalPrix, 0);
+
+        setOrders([
+          { time: 'Today', value: todayCommandes.length },
+          { time: 'Yesterday', value: yesterdayCommandes.length },
+          { time: 'This Week', value: thisWeekCommandes.length },
+          { time: 'This Month', value: thisMonthCommandes.length },
+        ]);
+
+        setEarnings([
+          { time: 'Today', value: `${todayTotalPrice} mad` },
+          { time: 'Yesterday', value: `${yesterdayTotalPrice} mad` },
+          { time: 'This Week', value: `${thisWeekTotalPrice} mad` },
+          { time: 'This Month', value: `${thisMonthTotalPrice} mad` },
+        ]);
+
+        setCommandes(commandesData);
+      });
   }, []);
 
   return (

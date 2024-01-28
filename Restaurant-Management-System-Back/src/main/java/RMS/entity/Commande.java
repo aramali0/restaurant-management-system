@@ -17,17 +17,25 @@ public class Commande {
     private Long idCommande;
     private Date date;
     private String status;
+    private double totalPrix;
     @OneToMany
     private List<Article> articles;
     @ManyToOne
     private Client client;
 
-    public Commande( Date date, Client client,List<Article> articles,String status)
-    {
+    public Commande(Date date, Client client, List<Article> articles, String status) {
         this.date = date;
         this.client = client;
         this.articles = articles;
         this.status = status;
+        this.calculateTotalPrix();
     }
 
+    public void calculateTotalPrix() {
+        if (articles != null && !articles.isEmpty()) {
+            this.totalPrix = articles.stream().mapToDouble(Article::getPrix).sum();
+        } else {
+            this.totalPrix = 0.0;
+        }
+    }
 }
