@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styles from './Table.module.css';
-import Model from '../model/Model';
 import axios from 'axios';
 
 const TableRow = ({ rowData, onClick }) => (
@@ -18,10 +17,12 @@ const Table = ({ tableData, headerData, ShouldShowModal, setmealsData, setClient
     axios.get(link1)
       .then(response => {
         setmealsData(response.data._embedded.articles);
+        console.log("get meals mealsData: ",response.data._embedded.articles);
       });
     axios.get(link2)
       .then(response => {
         setClient(response.data);
+        console.log("get meals client: ",response.data);
       });
   };
 
@@ -36,21 +37,21 @@ const Table = ({ tableData, headerData, ShouldShowModal, setmealsData, setClient
       </div>
       {tableData.map((row, index) => (
         <TableRow
-          key={index}
-          rowData={[
-            index + 1,
-            new Date(row.date).toLocaleDateString('en-US', {
-              day: 'numeric',
-              month: 'short',
-              year: 'numeric',
-            }),
-            row.status
-          ]}
-          onClick={() => {
-            ShouldShowModal(true)
-            getMeals(row._links.articles.href,row._links.client.href);
-          }}
-        />
+        key={index}
+        rowData={[
+          index + 1,
+          new Date(row.date).toLocaleDateString('en-US', {
+            day: 'numeric',
+            month: 'short',
+            year: 'numeric',
+          }),
+          row.status
+        ]}
+        onClick={() => {
+          getMeals(row._links.articles.href, row._links.client.href);
+          ShouldShowModal(true); 
+        }}
+      />
       ))}
     </div>
   );

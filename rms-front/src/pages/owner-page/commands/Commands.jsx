@@ -14,10 +14,10 @@ function Commands() {
   const [tableData, setTableData] = useState([]);
   const [mealsData, setmealsData] = useState([]);
   const [client, setClient] = useState({});
-  const headerData = ["Id", "Date", "Action"];
+  const headerData = ["Id", "Date", "Status"];
 
   useEffect(() => {
-    axios.get(`${BASE_URL}commandes?page=${nbrPage}&size=4`)
+    axios.get(`${BASE_URL}commandes/search/findCommandesByRestaurantId?restaurantId=1&page=${nbrPage}&size=4`)
       .then(response => {
         setTotalPage(response.data.page.totalPages);
         setTableData(response.data._embedded.commandes);
@@ -58,8 +58,8 @@ function Commands() {
           </div>
         </div>
       </div>
-      <Model shouldShow={shouldShow} onRequestClose={onRequestClose} data={shouldShow}>
-        <Articles client={client} mealsData={mealsData} />
+      <Model shouldShow={shouldShow} onRequestClose={onRequestClose}>
+        <Articles client={client} mealsData={mealsData}  />
       </Model>
     </div>
   );
