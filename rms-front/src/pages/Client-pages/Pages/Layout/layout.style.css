@@ -74,3 +74,23 @@ nav{
     color: black;
     padding-top: 9px;
 }
+.cart-size{
+    position: relative;
+}
+
+.cart-icon{
+    font-size: 60px;
+}
+
+.cart-count{
+    width: 30px;
+    min-width: 30px;
+    max-width: 30px;
+    position: absolute;
+    text-align: center;
+    background-color: #001D3D;
+    color: white;
+    padding: 4px;
+    border-radius: 50%;
+    right: 0px;
+}

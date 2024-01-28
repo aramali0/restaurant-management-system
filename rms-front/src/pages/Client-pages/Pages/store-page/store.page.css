@@ -4,18 +4,100 @@
     box-sizing: border-box;
 }
 
-.container{
-    display: flex;
-    width: 100%;
+.container-store{
     height: 100vh;
 }
-
-.right-column{
+.store-info-container{
     background-color: red;
-    width: 75%;
+    height: 40%;
+    position: relative;
 }
 
-.left-column{
-    width: 25%;
-    background-color: blueviolet;
+.cover-image-store{
+    height: 100%;
+}
+
+.cover-image-store img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    z-index: 1;
+    filter: blur(2px);
+}
+
+
+.store-info{
+    position: absolute;
+    bottom: 10px;
+    z-index: 2;
+    color: white;
+    width: 100%;
+    display: flex;
+}
+
+
+.brand-image {
+    margin: auto 30px 20px 20px;
+}
+
+.brand-image img{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px white solid;
+
+}
+
+.title-description-rating-store .title{
+    font-size: 40px;
+    font-weight: 700;
+}
+.title-description-rating-store .description{
+    font-size: 20px;
+}
+.title-description-rating-store .rating{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+.title-description-rating-store .satar-count{
+    display: flex;
+    margin-right: 10px;
+    background-color: rgba(255, 255, 255, 0.348);
+    padding: 5px;
+    border-radius: 40%;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.title-description-rating-store .description{
+    background-color: rgba(255, 255, 255, 0.348);
+    padding: 10px;
+    border-radius: 10px;
+    color: black;
+    font-weight: 600;
+}
+
+.title-description-rating-store .satar-count .stars-rating{
+    color: yellow;
+    margin-right: 2px;
+}
+.title-description-rating-store .satar-count .rating-count{
+    color: black;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.store-caegories{
+    height: 10%;
+    display: flex;
+    align-items: center;
+}
+.store-meals{
+    height: 50%;
+    display: flex;
+    overflow: scroll;
 }
