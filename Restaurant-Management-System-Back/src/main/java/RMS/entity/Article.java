@@ -30,4 +30,12 @@ public class Article {
         this.restaurant = restaurant;
         this.rating = rating;
     }
+    public Article(String name, double prix, String description, Categorie categorie,Restaurant restaurant)
+    {
+        this.name =name;
+        this.prix = prix;
+        this.description = description;
+        this.categorie = categorie;
+        this.restaurant = restaurant;
+    }
 }

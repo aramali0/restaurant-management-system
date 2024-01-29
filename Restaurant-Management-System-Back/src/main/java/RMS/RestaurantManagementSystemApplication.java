@@ -65,16 +65,19 @@ public class RestaurantManagementSystemApplication implements Runnable {
 		restaurantDAO.save(restaurant3);
 		restaurantDAO.save(restaurant4);
 
-		Article article1 = new Article("sandwich",80,"kkkkkkkkk",Categorie.FAST_FOOD,restaurant,3);
+		Article article1 = new Article("sandwich",80,"kkkkkkkkk",Categorie.FAST_FOOD,restaurant2,3);
 		Article article2 = new Article("Pizza",10,"kkkkkkkkk",Categorie.FAST_FOOD,restaurant2,4);
-		Article article3 = new Article("Tacos",20,"kkkkkkkkk",Categorie.FAST_FOOD,restaurant,6);
+		Article article3 = new Article("Tacos",20,"kkkkkkkkk",Categorie.FAST_FOOD,restaurant2,6);
+		Article article13 = new Article("sandwich",80,"kkkkkkkkk",Categorie.FAST_FOOD,restaurant2,3);
+		Article article14 = new Article("Pizza",10,"kkkkkkkkk",Categorie.FAST_FOOD,restaurant2,4);
+		Article article15 = new Article("Tacos",20,"kkkkkkkkk",Categorie.FAST_FOOD,restaurant2,6);
 
-		Article article4 = new Article("Sunrise Scramble Delight",12,"kkkkkkkkk",Categorie.ICECREAMS,restaurant,8);
+		Article article4 = new Article("Sunrise Scramble Delight",12,"kkkkkkkkk",Categorie.ICECREAMS,restaurant2,8);
 		Article article5 = new Article("Pancake Paradise Platter",102,"kkkkkkkkk",Categorie.ICECREAMS,restaurant2,9);
 		Article article6 = new Article("Berry Bliss Smoothie Bowl",17,"kkkkkkkkk",Categorie.ICECREAMS,restaurant3,9);
 
 		Article article7 = new Article("Midnight Mocha Madness",22,"kkkkkkkkk",Categorie.BREAKFATS,restaurant4,1);
-		Article article8 = new Article("Strawberry Swirl Spectacle",23,"kkkkkkkkk",Categorie.BREAKFATS,restaurant,8);
+		Article article8 = new Article("Strawberry Swirl Spectacle",23,"kkkkkkkkk",Categorie.BREAKFATS,restaurant2,8);
 		Article article9 = new Article("Pistachio Perfection Parade",10,"kkkkkkkkk",Categorie.BREAKFATS,restaurant3,9);
 
 		Article article10 = new Article("Mango Tango Mocktail",7,"kkkkkkkkk",Categorie.DRINKS,restaurant2,4);
@@ -92,6 +95,9 @@ public class RestaurantManagementSystemApplication implements Runnable {
 		articleDAO.save(article10);
 		articleDAO.save(article11);
 		articleDAO.save(article12);
+		articleDAO.save(article13);
+		articleDAO.save(article14);
+		articleDAO.save(article15);
 
 
 		ArrayList<Article> articles1 = new ArrayList<>();

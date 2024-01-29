@@ -41,3 +41,11 @@ button {
 button:hover {
  background-color: var(--second-color);
 }
+
+.reusable-form > img {
+ width: 100px;
+ height: 100px;
+ border-radius: 50%;
+ border: 1px solid gray;
+ background-color: #333;
+}

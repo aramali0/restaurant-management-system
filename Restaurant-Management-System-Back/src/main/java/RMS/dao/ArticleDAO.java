@@ -17,5 +17,9 @@ public interface ArticleDAO extends JpaRepository<Article, Long> {
     public List<Article> findArticlesBycategorie(@Param("categorie") Categorie categorie);
 
     Page<Article> findArticlesByRestaurantIdRestaurant(@Param("restaurantId") Long restaurantId, Pageable pageable);
-
+    Page<Article> findArticlesByRestaurantIdRestaurantAndNameContainingIgnoreCase(
+            @Param("restaurantId") Long restaurantId,
+            @Param("name") String name,
+            Pageable pageable
+    );
 }

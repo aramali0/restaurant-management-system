@@ -45,7 +45,8 @@ const Table = ({ tableData, headerData, ShouldShowModal, setmealsData, setClient
             month: 'short',
             year: 'numeric',
           }),
-          row.status
+          row.status,
+          `${row.totalPrix} mad`
         ]}
         onClick={() => {
           getMeals(row._links.articles.href, row._links.client.href);

@@ -25,4 +25,10 @@ public interface CommandeDAO extends JpaRepository<Commande, Long> {
     List<Commande> findCommandesByDateRange(
             @Param("startDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date startDate,
             @Param("endDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date endDate
-    );}
+    );
+
+    public List<Commande> findCommandesByArticlesIdArticle(@Param("idArticle") Long idArticle);
+
+}
+
+

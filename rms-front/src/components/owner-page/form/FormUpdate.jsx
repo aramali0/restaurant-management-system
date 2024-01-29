@@ -3,45 +3,25 @@ import './form.module.css';
 import { BASE_URL, CATEGORIES } from '../../../constants/index'
 import axios from 'axios';
 
-const ReusableForm = () => {
+const ReusableForm = ({ article , setUpdateId, setShouldShow}) => {
 
 
   const [formData, setFormData] = useState({
-    name: '',
-    prix: 0,
-    description: '',
-    categorie: CATEGORIES[0],
-    restaurant:{},
+    name: article.name,
+    prix: article.prix,
+    description: article.description,
+    categorie: article.categorie,
   });
-
- useEffect(() =>{
-  axios.get(`${BASE_URL}restaurants/2`)
-      .then(response1 => {
-        axios.get(response1.data._links.proprietaires.href)
-      .then(response2 => {
-        const resturant = {
-          idRestaurant: 2,
-          nomRestaurant : response1.data.nomRestaurant,
-          description :  response1.data.description,
-          brandImage : response1.data.brandImage,
-          rating : response1.data.rating,
-          proprietaires: response2.data._embedded.proprietaireRestus,
-        }
-        setFormData((prevData) => ({ ...prevData, restaurant: resturant }));
-      });
-      });
- })
-
 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
+    setFormData({ ...article, [name]: value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post(`http://localhost:8080/api/v2/article`, formData)
+    axios.put(article._links.self.href, formData)
     .then(function (response) {
       console.log(response);
     })
@@ -49,6 +29,7 @@ const ReusableForm = () => {
       console.log(error);
     });
     console.log(formData);
+    setUpdateId(Math.random())
     setFormData({
       name: '',
       prix: 0,
@@ -56,11 +37,12 @@ const ReusableForm = () => {
       categorie: CATEGORIES[0],
       restaurant:{},
     })
+    setShouldShow(false)
   };
 
   return (
     <form className="reusable-form" onSubmit={handleSubmit}>
-        {/* <img src={formData.src} alt="Meal Image" />
+        {/* <img src={formData.src} alt="article Image" />
       <label>
         <input
           type="file"
