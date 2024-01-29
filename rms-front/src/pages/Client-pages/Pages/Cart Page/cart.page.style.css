@@ -1,0 +1,235 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+hr{
+    margin: 35px 30px 20px;
+    background-color: rgba(128, 128, 128, 0.85);
+    height: 1px;
+    border: none;
+}
+
+.cart-page-container{
+    height: 85vh;
+    display: flex;
+    padding: 5px;
+}
+.cart-page-container::-webkit-scrollbar{
+    display: none;
+}
+.cart-page-left-column{
+    overflow-y: scroll;
+    width: 70%;
+}
+.header{
+    margin: 30px 20px 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cart-page-title{
+    margin-left: 10px;
+    font-weight: 700;
+    font-size: 25px;
+}
+.cart-page-item-count{
+    margin-right: 20px;
+    font-weight: 700;
+    font-size: 25px;
+}
+
+.cart-page-left-column::-webkit-scrollbar{
+    display: none;
+}
+
+.table-container{
+    display: flex;
+    justify-content: center;
+}
+
+.cart-page-table{
+    
+    width: 100%;
+    margin-right: 10px;
+    padding: 10px;
+}
+
+
+
+.cart-page-table thead th{
+    vertical-align: center;
+    text-align: center;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    color: gray;
+    font-size: 17px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+.cart-page-table tbody tr .article-details{
+    display: flex;
+}
+
+
+.cart-page-table tbody tr .article-details .article-image img{
+    object-fit: cover;
+    width: 120px;
+    height: 120px;
+    border-radius: 10px;
+}
+
+.cart-page-table tbody tr .article-details .article-info{
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+.go-back{
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+    width: 17%;
+    color: navy;
+    cursor: pointer;
+    font-weight: 600;
+}
+.go-back .back-btn{
+    color: navy;
+    font-size: 20px;
+    margin-right: 10px;
+}
+.go-back:hover{
+    text-decoration: underline;
+}
+.cart-page-table tbody tr .article-details .article-info .article-name{
+    font-weight: 600;
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+.cart-page-table tbody tr .article-details .article-info .categorie{
+    color: #FF7B00;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.cart-page-table tbody tr{
+    cursor: pointer;
+}
+.cart-page-table tbody tr .article-details .article-info .remove-btn{
+    color: grey;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    height: 24px;
+    border-radius: 15px;
+    width: 70px;
+    cursor: pointer;
+    transition: 2s;
+}
+
+.cart-page-table tbody tr .price{
+    text-align: center;
+    vertical-align: top;
+    font-weight: 700;
+    font-size: 20px;
+}
+.cart-page-table tbody tr .total{
+    text-align: center;
+    vertical-align: top;
+    font-weight: 700;
+    font-size: 20px;
+}
+.cart-page-table tbody tr .quantite{
+    text-align: center;
+    vertical-align: top;
+    
+}
+.cart-page-table tbody tr .quantite input{
+    width: 60px;    
+    height: 30px;
+    outline: none;
+    padding: 10px;
+}
+
+.cart-page-table tbody tr .article-details .article-info .remove-btn:hover{
+    text-decoration: underline;
+}
+
+
+.cart-page-right-column{
+    background-color: rgba(128, 128, 128, 0.15);
+    width: 30%;
+}
+
+.cart-page-right-column .title{
+    font-size: 30px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-top: 20px;
+    margin-left: 20px;
+    font-weight: 400;
+}
+
+.cart-page-right-column .header .items, .cart-page-right-column .header .price{
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.cart-page-right-column .aditional-info{
+    display: flex;
+    flex-direction: column;
+    margin: 10px 30px;
+}
+.cart-page-right-column .aditional-info div{
+    margin: 10px auto 10px 0px;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.cart-page-right-column .aditional-info input{
+    height: 40px;
+    border-radius: 10px;
+    outline: none;
+    padding: 10px;
+    border: none;
+    margin-bottom: 30px;
+}
+
+.cart-page-right-column .aditional-info button{
+    height: 40px;
+    border-radius: 10px;
+    outline: none;
+    padding: 10px;
+    border: none;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 700;
+    width: 100px;
+}
+
+.cart-page-right-column .header{
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.order-btn{
+    cursor: pointer;
+    background-color: #003566;
+    color: white;
+    width: 80%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10%;
+    font-size: 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.order-btn:hover{
+    transform: scale(1.1);
+}
