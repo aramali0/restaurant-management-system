@@ -22,7 +22,7 @@ function DashBoard() {
   const [commandes, setCommandes] = useState([]);
 
   useEffect(() => {
-    axios.get(`${BASE_URL}commandes/search/findCommandesByRestaurantId?restaurantId=1`)
+    axios.get(`${BASE_URL}commandes/search/findCommandesByRestaurantId?restaurantId=2`)
       .then(response => {
         const commandesData = response.data._embedded.commandes;
 

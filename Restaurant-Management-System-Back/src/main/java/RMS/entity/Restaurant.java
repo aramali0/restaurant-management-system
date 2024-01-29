@@ -21,7 +21,7 @@ public class Restaurant {
     private String brandImage ;
     @OneToMany(mappedBy = "restaurant")
     private List<ProprietaireRestu> proprietaires;
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "restaurant")
+    @OneToMany(mappedBy = "restaurant")
     private List<Article> articles;
     private int rating;
 

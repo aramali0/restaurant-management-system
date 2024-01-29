@@ -1,0 +1,14 @@
+.container{
+ background-color: var(--fourth-color);
+ width: 80%;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ color: white;
+}
+
+.form{
+ border: 3px solid var(--second-color);
+ padding: 40px;
+ border-radius: 20px;
+}
