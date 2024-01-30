@@ -7,6 +7,7 @@ function CartPage() {
     const [articles,setArticles] = useState([])
     const [quantite, setQuantite] = useState([])
     const [currentPanierId, setCurentPanierId] = useState(NaN);
+    const [totalPrice, setTotalPrice] = useState([]);
     const [message,setMessage] = useState('')
     const navigat = useNavigate();
     const getPaniers = ()=>{
@@ -16,13 +17,28 @@ function CartPage() {
                 (resp)=>{
                     resp.json().then((resp)=>{
                         setArticles(resp._embedded.articles);
-
+                        
             })})
         })})
     }
     useEffect(()=>{
-        getPaniers()
+        getPaniers();
+        articles.map((_,key)=>{
+            setQuantite(prevState=>{
+                const tab = prevState;
+                tab[key] = quantite[key];
+                return [...tab];
+            })
+        })
     }, [])
+    useEffect(()=>{
+        var S =0;
+        articles.map((article,key)=>{
+            S = S + article.prix *(isNaN(quantite[key]) ? 1 : quantite[key])
+        })
+        setTotalPrice(S)
+        
+    }, [articles, quantite]);
     const handleRemoveArticleFromPanier = (idArticle)=>{
         if(!isNaN(idArticle)){
             console.log("DELETE ",idArticle,currentPanierId);
@@ -98,8 +114,8 @@ function CartPage() {
                 <div className='title'><p>Order summary</p></div>
                 <hr />
                 <div className='header'>
-                    <div className='items'>ITEMS 17</div>
-                    <div className='price'>120$</div>
+                    <div className='items'>{articles.length ? (articles.length ===1 ? "1 ITEM" : articles.length + " ITEMS") : undefined}</div>
+                    <div className='price'>{totalPrice}$</div>
                 </div>
                 <div className='aditional-info'>
                     <div>PROMO CODE:</div>
@@ -109,9 +125,9 @@ function CartPage() {
                 <hr />
                 <div className='header'>
                     <div className='total-cost'>TOTAL COST</div>
-                    <div className='price'>145$</div>
+                    <div className='price'>{totalPrice}$</div>
                 </div>
-                <div className='order-btn'>ORDER NOW</div>
+                <div className='order-btn' >ORDER NOW</div>
             </div>
         </div>
         : <h1>No articles</h1>
