@@ -25,6 +25,7 @@ public class PanierController {
         panierDAO.save(panier);
     }
 
+    @CrossOrigin
     @DeleteMapping("/panier/{idArticle}/{idPanier}")
     public void deletArticleFromPanier(@PathVariable(name = "idArticle") Long idArticle,@PathVariable(name = "idPanier") Long idPanier){
         Panier panier = panierDAO.findById(idPanier).get();

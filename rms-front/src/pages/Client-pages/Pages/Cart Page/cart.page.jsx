@@ -1,13 +1,61 @@
+import { useEffect, useState } from 'react';
 import './cart.page.style.css'
 import { IoMdArrowRoundBack } from "react-icons/io";
+import {Link, useNavigate} from 'react-router-dom'
 
 function CartPage() {
+    const [articles,setArticles] = useState([])
+    const [quantite, setQuantite] = useState([])
+    const [currentPanierId, setCurentPanierId] = useState(NaN);
+    const [message,setMessage] = useState('')
+    const navigat = useNavigate();
+    const getPaniers = ()=>{
+        fetch("http://localhost:8080/api/clients/1/panier").then((resp)=>{resp.json().then((resp)=>{
+            setCurentPanierId(resp.idPanier)
+            fetch(resp._links.articles.href).then(
+                (resp)=>{
+                    resp.json().then((resp)=>{
+                        setArticles(resp._embedded.articles);
+
+            })})
+        })})
+    }
+    useEffect(()=>{
+        getPaniers()
+    }, [])
+    const handleRemoveArticleFromPanier = (idArticle)=>{
+        if(!isNaN(idArticle)){
+            console.log("DELETE ",idArticle,currentPanierId);
+            fetch(`http://localhost:8080/api-c/paniers/panier/${idArticle}/${currentPanierId}`,
+                {method: 'DELETE', body:{}}
+            )
+            setMessage(prevState =>{
+                return "Item deleted succesfully !"
+            })
+            document.querySelector('.cart-page-message').style.display='block'
+            getPaniers()
+            setTimeout(() => {
+                document.querySelector('.cart-page-message').style.display='none'
+            }, 2000);
+        }
+    }
+    const handleQuntChange = (e,index)=>{
+        const target = e.currentTarget;
+        setQuantite(prevState=>{
+            const tab = prevState;
+            tab[index] = target.value;
+            return [...tab];
+        })
+    }
     return ( <>
-        <div className="cart-page-container">
+    {
+        articles.length>0 ? <div className="cart-page-container">
+            
+                <div className="cart-page-message">{message}</div>
             <div className="cart-page-left-column">
                 <div className='header' >
                     <div className='cart-page-title'>Panier</div>
-                    <div className='cart-page-item-count'>3 Items</div>
+                    <div className='cart-page-item-count'>{articles.length ? (articles.length ===1 ? "1 ITEM" : articles.length + " ITEMS") : undefined}</div>
                 </div>
                 <hr />
                 <div className='table-container'>
@@ -22,26 +70,26 @@ function CartPage() {
                     </thead>
                     <tbody>
                         {
-                            [1,2,3,4,5,6,7].map((value)=>{
+                            articles.map((article,key)=>{
                                 return <tr>
                                 <td className='article-details'>
                                     <div className='article-image'><img width src="src/assets/client-assets/restautant-images/meal1.jpg" alt="article-image" /></div>
                                     <div className='article-info'>
-                                        <div className='article-name'>Sandawich</div>
-                                        <div className='categorie'>Fast food</div>
-                                        <div className='remove-btn'>remove</div>
+                                        <div className='article-name'>{article.name}</div>
+                                        <div className='categorie'>{article.categorie}</div>
+                                        <div className='remove-btn' onClick={()=>handleRemoveArticleFromPanier(article.idArticle)}>remove</div>
                                     </div>
                                 </td>
-                                <td className='quantite'><input min="1" type="number" /></td>
-                                <td className='price'>7$</td>
-                                <td className='total'>23.6$</td>
+                                <td className='quantite'><input defaultValue={1} min="1" onChange={(e)=>handleQuntChange(e,key)} type="number" /></td>
+                                <td className='price'>{article.prix}$</td>
+                                <td className='total'>{ isNaN(quantite[key]) ? article.prix : quantite[key]*article.prix}$</td>
                             </tr>
                             })
                         }
                     </tbody>
                 </table>
                 </div>
-                <div className='go-back' >
+                <div className='go-back' onClick={()=> {navigat("/home")}} >
                     <IoMdArrowRoundBack className='back-btn' />
                     <span>Continue Shoping</span>
                 </div>
@@ -66,6 +114,8 @@ function CartPage() {
                 <div className='order-btn'>ORDER NOW</div>
             </div>
         </div>
+        : <h1>No articles</h1>
+        }
     </> );
 }
 

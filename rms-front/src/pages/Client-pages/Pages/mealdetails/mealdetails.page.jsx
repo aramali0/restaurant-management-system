@@ -28,6 +28,10 @@ function MealDetails() {
             return key<4 ? <MealCard meal={meal} mealImage={imgSrc} /> : undefined;
         })
     }
+    const handleAddMealToCart = ()=>{
+        setIndex(index+1);
+        console.log(meal);
+    }
     return ( <>
     <div className="container">
             <div className="left-column">
@@ -55,7 +59,7 @@ function MealDetails() {
                     <p>/5 reviews</p>
                 </div>
                 <div className="meal-price-details">{meal.prix} $</div>
-                <div onClick={()=>setIndex(index+1)}  className="add-meal-cart">Add to cart</div>
+                <div onClick={handleAddMealToCart}  className="add-meal-cart">Add to cart</div>
                 <h2>Similar</h2>
                 <div className="other-meals">
                     {
