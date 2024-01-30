@@ -1,18 +1,19 @@
 package RMS.config;
-import org.springframework.context.annotation.Configuration;
+
+
+import RMS.entity.Article;
+import RMS.entity.Panier;
+import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
+import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-@Configuration
-public class CorsConfig implements WebMvcConfigurer {
-
+@Component
+public class CorsConfig implements RepositoryRestConfigurer {
     @Override
-    public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**")
-                .allowedOrigins("http://localhost:5173")
-                .allowedMethods("*")
-                .allowedHeaders("*")
-                .allowCredentials(false).maxAge(-1);
+    public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
+        config.exposeIdsFor(Article.class);
+        config.exposeIdsFor(Panier.class);
     }
 }
 

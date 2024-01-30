@@ -19,7 +19,7 @@ public class Panier {
     private Long idPanier ;
     private int quantite;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = CascadeType.ALL)
     private Client client;
     @ManyToMany( cascade = CascadeType.ALL)
     private List<Article> articles;
