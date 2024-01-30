@@ -1,0 +1,14 @@
+.imgContainer{
+ background-size: cover;
+ border-radius: 50%;
+ display: flex;
+}
+
+
+.profileImage{
+ border-radius: 50%;
+ margin: 0px;
+}
+.name{
+ font-weight: 800;
+}

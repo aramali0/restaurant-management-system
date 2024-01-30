@@ -49,3 +49,14 @@ button:hover {
  border: 1px solid gray;
  background-color: #333;
 }
+
+.profileImage{
+ border-radius: 50%;
+ margin: 0px;
+}
+
+.profile{
+ display: flex;
+ justify-content: center;
+ background-color: black;
+}

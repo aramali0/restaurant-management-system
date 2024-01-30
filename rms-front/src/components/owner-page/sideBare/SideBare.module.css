@@ -9,9 +9,19 @@
 
 .heading {
  font-size: 1.5em; 
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ gap: 10px;
  margin-bottom: 20px; 
- padding:20px  0 0 20px;
+ padding-top: 15px;
+ width: 100%;
  cursor: pointer;
+ transition: all 0.5s;
+}
+.heading:hover {
+ scale: 1.1;
 }
 
 .list {
@@ -40,5 +50,23 @@
 }
 
 .navLink:global(.active){
+ background-color: var(--second-color);
+}
+
+.footer{
+ display: flex;
+ justify-content: center;
+ width: 100%;
+}
+.footer > button{
+ width: 80%;
+ color: var(--second-color);
+ font-size: large;
+ font-weight: 700;
+ background-color: rgb(255, 64, 0);
+ transition: 0.7s;
+}
+.footer:hover > button{
+ color:  rgb(255, 64, 0);
  background-color: var(--second-color);
 }
