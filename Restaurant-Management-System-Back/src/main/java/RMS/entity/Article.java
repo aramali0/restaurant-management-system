@@ -19,10 +19,14 @@ public class Article {
     private String description;
     private Categorie categorie;
     private int rating;
+    @Lob
+    private byte[] imageUrl;
     @ManyToOne
     private Restaurant restaurant;
     @ManyToMany(cascade = CascadeType.ALL)
     private List<Panier> paniers;
+    @ManyToMany
+    private List<Commande> commandes ;
     public Article(String name, double prix, String description, Categorie categorie,Restaurant restaurant, int rating)
     {
         this.name =name;
@@ -32,12 +36,13 @@ public class Article {
         this.restaurant = restaurant;
         this.rating = rating;
     }
-    public Article(String name, double prix, String description, Categorie categorie,Restaurant restaurant)
+    public Article(String name, double prix, String description, Categorie categorie,byte[] imageUrl,Restaurant restaurant)
     {
         this.name =name;
         this.prix = prix;
         this.description = description;
         this.categorie = categorie;
         this.restaurant = restaurant;
+        this.imageUrl = imageUrl;
     }
 }

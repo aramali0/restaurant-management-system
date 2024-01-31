@@ -1,23 +1,27 @@
-import { useEffect, useState } from 'react';
-import './cart.page.style.css'
+import { useContext, useEffect, useState } from 'react';
+import './cart.page.style.css';
 import { IoMdArrowRoundBack } from "react-icons/io";
-import {Link, useNavigate} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom';
+import { Context } from "../Layout/layout";
 
 function CartPage() {
-    const [articles,setArticles] = useState([])
-    const [quantite, setQuantite] = useState([])
+    const [index, setIndex] = useContext(Context);
+    const [articles,setArticles] = useState([]);
+    const [quantite, setQuantite] = useState([]);
     const [currentPanierId, setCurentPanierId] = useState(NaN);
     const [totalPrice, setTotalPrice] = useState([]);
-    const [message,setMessage] = useState('')
+    const [message,setMessage] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
     const navigat = useNavigate();
     const getPaniers = ()=>{
-        fetch("http://localhost:8080/api/clients/1/panier").then((resp)=>{resp.json().then((resp)=>{
-            setCurentPanierId(resp.idPanier)
+        fetch("http://localhost:8080/api/clients/1/panier").then((resp)=>{resp.json().then(
+            (resp)=>{
+            setCurentPanierId(resp.idPanier);
             fetch(resp._links.articles.href).then(
                 (resp)=>{
                     resp.json().then((resp)=>{
                         setArticles(resp._embedded.articles);
-                        
+                        setIndex(resp._embedded.articles.length);
             })})
         })})
     }
@@ -41,7 +45,6 @@ function CartPage() {
     }, [articles, quantite]);
     const handleRemoveArticleFromPanier = (idArticle)=>{
         if(!isNaN(idArticle)){
-            console.log("DELETE ",idArticle,currentPanierId);
             fetch(`http://localhost:8080/api-c/paniers/panier/${idArticle}/${currentPanierId}`,
                 {method: 'DELETE', body:{}}
             )
@@ -49,11 +52,12 @@ function CartPage() {
                 return "Item deleted succesfully !"
             })
             document.querySelector('.cart-page-message').style.display='block'
-            getPaniers()
+            getPaniers();
             setTimeout(() => {
                 document.querySelector('.cart-page-message').style.display='none'
             }, 2000);
         }
+        getPaniers();
     }
     const handleQuntChange = (e,index)=>{
         const target = e.currentTarget;
@@ -62,6 +66,53 @@ function CartPage() {
             tab[index] = target.value;
             return [...tab];
         })
+    }
+    const handleOrderNow = ()=>{
+        fetch(
+            "http://localhost:8080/api/commandes", 
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                method : "POST", 
+                body : JSON.stringify({
+                    date: (new Date()).toISOString(),
+                    status: "Pending",
+                    totalPrix: totalPrice,
+                    client : "http://localhost:8080/api/client/1",
+                    articles : [],
+                }),
+            },
+            ).then((resp)=>{
+                resp.json().then((resp)=>{
+                    const idCommande = resp.idCommande;
+                    articles.map((article)=>{
+                        fetch(
+                            `http://localhost:8080/api-c/commandes/commande/${article.idArticle}/${idCommande}`, 
+                            {
+                                method : "POST",
+                            }
+                            ).then((result) => {
+                                console.log((result));
+                                setMessage("Order passed succesfully !");
+                                document.querySelector('.cart-page-message').style.display='block'
+                                setTimeout(() => {
+                                    document.querySelector('.cart-page-message').style.display='none'
+                                }, 2000);
+                            }).catch((err) => {
+                                console.log(message);
+                                setMessage(err);
+                                document.querySelector('.cart-page-message').style.display='block'
+                                document.querySelector('.cart-page-message').style.backgroundColor='red'
+                                setTimeout(() => {
+                                    document.querySelector('.cart-page-message').style.display='none'
+                                    document.querySelector('.cart-page-message').style.backgroundColor='black'
+                                }, 2000);
+                            });
+                    })
+                    
+                })
+            })
     }
     return ( <>
     {
@@ -127,7 +178,7 @@ function CartPage() {
                     <div className='total-cost'>TOTAL COST</div>
                     <div className='price'>{totalPrice}$</div>
                 </div>
-                <div className='order-btn' >ORDER NOW</div>
+                <div className='order-btn' onClick={handleOrderNow} >ORDER NOW</div>
             </div>
         </div>
         : <h1>No articles</h1>

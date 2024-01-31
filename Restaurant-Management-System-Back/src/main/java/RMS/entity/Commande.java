@@ -18,7 +18,7 @@ public class Commande {
     private Date date;
     private String status;
     private double totalPrix;
-    @OneToMany
+    @ManyToMany
     private List<Article> articles;
     @ManyToOne
     private Client client;

@@ -19,11 +19,11 @@ function Meals() {
   const [tableData, setTableData] = useState([])
   const [deleteId,setDeleteId] = useState(0);
   const [updateId,setUpdateId] = useState(0);
-
+  const restaurantId = 2;
  
 
   const SearchFn = () =>{
-    axios.get(`${BASE_URL}articles/search/findArticlesByRestaurantIdRestaurantAndNameContainingIgnoreCase?restaurantId=2&name=${meal}&page=${nbrPage}&size=6`)
+    axios.get(`${BASE_URL}articles/search/findArticlesByRestaurantIdRestaurantAndNameContainingIgnoreCase?restaurantId=${restaurantId}&name=${meal}&page=${nbrPage}&size=6`)
       .then(response => {
         setTotalPage(response.data.page.totalPages);
         setTableData(response.data._embedded.articles);
