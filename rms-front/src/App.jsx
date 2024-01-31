@@ -8,6 +8,9 @@ import CreateForm from './pages/owner-page/createForm/CreateForm';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import RestaurantPage from './pages/owner-page/restaurant/RestaurantPage';
+import LoginPage from './pages/owner-page/login/LoginPage';
+import Sinscrire from './components/owner-page/sinscrire/Sinscrire';
+import SinscrirePage from './pages/owner-page/sinscrire/SinscrirePage';
 
 function App() {
   
@@ -31,7 +34,7 @@ function App() {
 }
 
 const [restaurant,setRestaurant] = useState(); 
-
+const idRestaurant = 2;
 useEffect(() => {
   axios.get(owner._links.restaurant.href).then((response) =>{
     setRestaurant(response.data);
@@ -42,6 +45,9 @@ useEffect(() => {
     <>
        <BrowserRouter >
           <Routes>
+            <Route path="/" element={<LoginPage/>}/> 
+            <Route path="/login" element={<LoginPage/>}/> 
+            <Route path="/sinscrire" element={<SinscrirePage/>}/> 
             <Route path="owner" element={<Home restaurant={restaurant} />}>
               <Route index element={<DashBoard/>} />
               <Route path='dashBoard' element={<DashBoard/>}/>
