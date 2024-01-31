@@ -25,6 +25,8 @@ public class Article {
     private Restaurant restaurant;
     @ManyToMany(cascade = CascadeType.ALL)
     private List<Panier> paniers;
+    @ManyToMany
+    private List<Commande> commandes ;
     public Article(String name, double prix, String description, Categorie categorie,Restaurant restaurant, int rating)
     {
         this.name =name;

@@ -2,6 +2,7 @@ package RMS.config;
 
 
 import RMS.entity.Article;
+import RMS.entity.Commande;
 import RMS.entity.Panier;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
@@ -14,6 +15,7 @@ public class CorsConfig implements RepositoryRestConfigurer {
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
         config.exposeIdsFor(Article.class);
         config.exposeIdsFor(Panier.class);
+        config.exposeIdsFor(Commande.class);
     }
 }
 
