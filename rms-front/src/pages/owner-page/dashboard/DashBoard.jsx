@@ -3,6 +3,7 @@ import axios from 'axios';
 import styles from './dashBoard.module.css';
 import DashCard from '../../../components/owner-page/DashCard/DashCard';
 import { BASE_URL } from '../../../constants';
+const restaurantId = 2;
 
 function DashBoard() {
   const [orders, setOrders] = useState([
@@ -22,7 +23,7 @@ function DashBoard() {
   const [commandes, setCommandes] = useState([]);
 
   useEffect(() => {
-    axios.get(`${BASE_URL}commandes/search/findCommandesByRestaurantId?restaurantId=2`)
+    axios.get(`${BASE_URL}commandes/search/findCommandesByRestaurantId?restaurantId=${restaurantId}`)
       .then(response => {
         const commandesData = response.data._embedded.commandes;
 
