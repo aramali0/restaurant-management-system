@@ -11,6 +11,7 @@ const ReusableForm = () => {
     prix: 0,
     description: '',
     categorie: CATEGORIES[0],
+    imageUrl:'',
     restaurant:{},
   });
 
@@ -32,7 +33,13 @@ const ReusableForm = () => {
       });
  })
 
-
+ const handleFileChange = (e) => {
+  const file = e.target.files[0];
+  if (file) {
+    const image = URL.createObjectURL(file);
+    setFormData((prevData) => ({ ...prevData, imageUrl: image }));
+  }
+};
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -60,15 +67,17 @@ const ReusableForm = () => {
 
   return (
     <form className="reusable-form" onSubmit={handleSubmit}>
-        {/* <img src={formData.src} alt="Meal Image" />
-      <label>
-        <input
-          type="file"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
+        <div className="profile">
+        <img
+          className="profileImage"
+          src={formData.imageUrl}
+          width="80"
+          alt="restaurant Image"
         />
-      </label> */}
+        <label>
+          <input type="file" name="imageUrl" onChange={handleFileChange} />
+        </label>
+      </div>
       <label>
         Name:
         <input

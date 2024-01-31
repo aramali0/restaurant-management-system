@@ -44,7 +44,7 @@ public class RestaurantManagementSystemApplication implements Runnable {
 		Client c4 = new Client("hajar","hajar@gmail.com","123","0605040303","sm");
 		Client c5 = new Client("reem","reem@gmail.com","123","900990909","04");
 
-		pDAO.save(p1);
+
 		clientDAO.save(c2);
 		clientDAO.save(c3);
 		clientDAO.save(c4);
@@ -62,6 +62,8 @@ public class RestaurantManagementSystemApplication implements Runnable {
 		Restaurant restaurant3 = new Restaurant("Urban Harvest Kitchen","fast food","later",proprietaireRestus,8);
 		Restaurant restaurant4 = new Restaurant("Culinary Canvas Cafe","fast food","later",proprietaireRestus,9);
 
+		p1.setRestaurant(restaurant);
+		pDAO.save(p1);
 		restaurantDAO.save(restaurant);
 		restaurantDAO.save(restaurant2);
 		restaurantDAO.save(restaurant3);
