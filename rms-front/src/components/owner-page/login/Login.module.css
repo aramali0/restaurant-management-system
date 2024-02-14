@@ -15,13 +15,13 @@
  border: none;
 }
 
-label {
+.label {
  display: block;
  margin-bottom: 8px;
  margin: 10px 0;
 }
 
-input {
+.input {
  width: 100%;
  padding: 8px;
  margin-bottom: 16px;
@@ -29,7 +29,7 @@ input {
  border-radius: 4px;
 }
 
-button {
+.btn {
  background-color: var(--main-color);
  color: white;
  padding: 10px;
@@ -39,7 +39,7 @@ button {
  width: 100px;
 }
 
-button:hover {
+.btn:hover {
  background-color: var(--second-color);
 }
 

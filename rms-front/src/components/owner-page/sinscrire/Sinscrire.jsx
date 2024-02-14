@@ -26,41 +26,45 @@ const Sinscrire = () => {
     <div className={styles.signupContainer}>
       <h2>S'inscrire</h2>
       <form className={styles.signupForm}>
-        <label htmlFor="nomPersonne">Nom</label>
-        <input
+        <label className={styles.label} htmlFor="nomPersonne">Nom</label>
+        <input className={styles.input}
           type="text"
           id="nomPersonne"
           value={nomPersonne}
           onChange={(e) => setNomPersonne(e.target.value)}
         />
 
-        <label htmlFor="email">Email</label>
+        <label className={styles.label} htmlFor="email">Email</label>
         <input
+          className={styles.input}
           type="email"
           id="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
 
-        <label htmlFor="motPass">Mot de passe</label>
+        <label className={styles.label} htmlFor="motPass">Mot de passe</label>
         <input
+          className={styles.input}
           type="password"
           id="motPass"
           value={motPass}
           onChange={handlePasswordChange}
         />
 
-        <label htmlFor="motdePassVerif">Vérification du mot de passe</label>
+        <label className={styles.label}  htmlFor="motdePassVerif">Vérification du mot de passe</label>
         <input
+         
           type="password"
           id="motdePassVerif"
           value={motdePassVerif}
           onChange={handlePasswordVerificationChange}
-          className={isPasswordValid ? 'valid' : 'invalid'}
-        />
+          className={`${styles.input} ${isPasswordValid ? 'valid' : 'invalid'}`}
+          />
 
-        <label htmlFor="numTelel">Numéro de téléphone</label>
+        <label className={styles.label} htmlFor="numTelel">Numéro de téléphone</label>
         <input
+          className={styles.input}
           type="tel"
           id="numTelel"
           value={numTelel}

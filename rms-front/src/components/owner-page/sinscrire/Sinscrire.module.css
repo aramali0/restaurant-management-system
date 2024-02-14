@@ -12,12 +12,12 @@
  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-label {
+.label {
  display: block;
  margin-bottom: 4px;
 }
 
-input {
+.input {
  width: 100%;
  padding: 6px;
  margin-bottom: 16px;
@@ -25,12 +25,12 @@ input {
  border-radius: 4px;
 }
 
-input.invalid {
+.input.invalid {
  border-color: #ff4d4f;
 }
 
-button {
- background-color: #4caf50;
+.button {
+ background-color: var(--main-color);
  color: white;
  padding: 10px;
  border: none;
@@ -44,5 +44,5 @@ button:disabled {
 }
 
 button:hover:enabled {
- background-color: #45a049;
+ background-color:  var(--second-color);
 }
