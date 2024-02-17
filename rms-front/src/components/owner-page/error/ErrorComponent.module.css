@@ -1,0 +1,10 @@
+.error{
+ background-color: white;
+ padding: 20px;
+ position: absolute;
+ top: 10px;
+ right: 30%;
+ transform: translate(-50%);
+ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+ border-radius: 10px;
+}
