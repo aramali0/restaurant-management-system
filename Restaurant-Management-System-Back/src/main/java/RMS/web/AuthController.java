@@ -1,12 +1,18 @@
 package RMS.web;
 
 import RMS.Utils.JWTUtil;
+import RMS.dao.AdminDAO;
 import RMS.dao.ClientDAO;
+import RMS.dao.PersonneDAO;
+import RMS.dao.ProprietaireRestaurantDAO;
 import RMS.dto.AuthenticationRequest;
 import RMS.dto.AuthenticationResponse;
 import RMS.dto.SignupRequest;
 import RMS.dto.UserDto;
+import RMS.entity.Admin;
 import RMS.entity.Client;
+import RMS.entity.Personne;
+import RMS.entity.ProprietaireRestu;
 import RMS.services.auth.AuthService;
 import RMS.services.jwt.UserService;
 import lombok.RequiredArgsConstructor;
@@ -30,7 +36,7 @@ public class AuthController {
     private final AuthenticationManager authenticationManager;
     private final UserService userService;
     private final JWTUtil jwtUtil;
-    private final ClientDAO userRepo;
+    private final PersonneDAO personneDAO;
 
     @PostMapping("/signup")
     public ResponseEntity<?> signupCustomer(@RequestBody SignupRequest signupRequest){
@@ -56,7 +62,7 @@ public class AuthController {
 
         }
         final UserDetails userDetails = userService.userDetailsService().loadUserByUsername(authenticationRequest.getEmail());
-        Optional<Client> optionalUser = userRepo.findFirstByEmail(userDetails.getUsername());
+        Optional<Personne> optionalUser = personneDAO.findFirstByEmail(userDetails.getUsername());
         final String jwt = jwtUtil.generateToken(userDetails);
         AuthenticationResponse authenticationResponse = new AuthenticationResponse();
         if(optionalUser.isPresent())

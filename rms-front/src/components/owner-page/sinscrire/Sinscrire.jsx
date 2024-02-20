@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styles from './Sinscrire.module.css';
 import axios from 'axios';
 import ErrorComponent from '../error/ErrorComponent';
+import { useNavigate } from 'react-router-dom';
 
 
 const Sinscrire = () => {
@@ -13,6 +14,7 @@ const Sinscrire = () => {
   const [address, setAddress] = useState('');
   const [error, setError] = useState('');
   const [color, setColor] = useState('');
+  const navigate = useNavigate();
 
   const handleSignup = () => {
     console.log('Signing up with:', nomPersonne, email, motPass, numTelel);
@@ -23,13 +25,15 @@ const Sinscrire = () => {
       'num': numTelel,
       'address': address,
     }).then((res) => {
-      color("green")
-      setError("succesful")
-      navigator("/login")
+    
+        navigate("/login")
+        console.log("res: "+res);
+       
+
     }).catch((error) =>{
       setError(error.response.data);
       setColor("red");
-      
+      console.log("error"+error);
     })
   
   };

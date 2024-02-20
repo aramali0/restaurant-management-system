@@ -25,7 +25,11 @@ function MealCard({meal, mealImage,isMeal,setDeleteId,setUpdateId,setShouldShow,
     };
 
     const handleDelete = () => {
-        axios.post(`http://localhost:8080/api/v2/article/${extractIdFromUrl(meal._links.self.href)}`)
+        axios.post(`http://localhost:8080/api/article/${extractIdFromUrl(meal._links.self.href),{
+            headers: {
+              'Authorization': `Bearer ${JWT}`
+            }
+          }}`)
         .then(function (response) {
           console.log(response);
         })

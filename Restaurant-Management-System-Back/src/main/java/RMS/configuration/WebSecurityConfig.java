@@ -31,11 +31,12 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
+        System.out.println("securityFilter activated");
         http.csrf(AbstractHttpConfigurer::disable).authorizeRequests(
                 request -> request.requestMatchers("/api/auth/**").permitAll()
-                .requestMatchers("/api/admin/**").hasAnyAuthority(UserRole.ADMIN.name())
-                        .requestMatchers("/api/customer/**").hasAnyAuthority(UserRole.CUSTOMER.name())
-                        .requestMatchers("/api/owner/**").hasAnyAuthority(UserRole.OWNER.name())
+                .requestMatchers("/api/**").hasAnyAuthority(UserRole.ADMIN.name())
+                        .requestMatchers("/api/**").hasAnyAuthority(UserRole.CUSTOMER.name())
+                        .requestMatchers("/api/**").hasAnyAuthority(UserRole.OWNER.name())
                         .anyRequest().authenticated()).sessionManagement(manager ->
                 manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider())

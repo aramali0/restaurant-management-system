@@ -11,12 +11,17 @@ function Clients() {
   const [tableData, setTableData] = useState([])
 
   const getSearch = () => {
-    axios.get(`${BASE_URL}clients/search/findClientsByNomPersonne?nomPersonne=${client}&page=${nbrPage}&size=4`)
+    axios.get(`${BASE_URL}clients/search/findClientsByNomPersonne?nomPersonne=${client}&page=${nbrPage}&size=4`, {
+      headers: {
+        'Authorization': `Bearer ${JWT}`
+      }
+    })
       .then(response => {
         setTotalPage(response.data.page.totalPages);
         setTableData(response.data._embedded.clients);
+        console.log()
       });
-      setClient("");
+      setClient("response.data._embedded.clients");
   }
 
   useEffect(() => {

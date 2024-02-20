@@ -1,7 +1,12 @@
 package RMS.services.jwt;
 
+import RMS.dao.AdminDAO;
 import RMS.dao.ClientDAO;
+import RMS.dao.PersonneDAO;
+import RMS.dao.ProprietaireRestaurantDAO;
+import RMS.entity.Admin;
 import RMS.entity.Client;
+import RMS.entity.ProprietaireRestu;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -13,7 +18,7 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService{
 
 
-    private final ClientDAO personneDAO;
+    private final PersonneDAO personneDAO;
 
     @Override
     public UserDetailsService userDetailsService()
