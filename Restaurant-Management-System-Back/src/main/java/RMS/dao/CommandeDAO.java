@@ -10,12 +10,17 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Date;
 import java.util.List;
 
 @CrossOrigin
+//@RequestMapping("/api/admin")
+@Repository
+
 public interface CommandeDAO extends JpaRepository<Commande, Long> {
     public List<Commande> findCommandesByClientNomPersonne(@Param("name") String name);
     @Query("SELECT c FROM Commande c JOIN c.articles a WHERE a.restaurant.idRestaurant = :restaurantId")

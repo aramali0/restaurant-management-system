@@ -8,7 +8,7 @@ import { BASE_URL } from '../../../constants'
 import MealCard from '../../../components/owner-page/meal-card/meal.card'
 import { useNavigate } from 'react-router-dom'
 
-function Meals() {
+function Meals({JWT}) {
 
   const navigate = useNavigate();
   const [nbrPage, setNbrPage] = useState(0);
@@ -23,11 +23,11 @@ function Meals() {
  
 
   const SearchFn = () =>{
-    axios.get(`${BASE_URL}articles/search/findArticlesByRestaurantIdRestaurantAndNameContainingIgnoreCase?restaurantId=${restaurantId}&name=${meal}&page=${nbrPage}&size=6`)
-      .then(response => {
-        setTotalPage(response.data.page.totalPages);
-        setTableData(response.data._embedded.articles);
-      });
+    axios.get(`${BASE_URL}articles/search/findArticlesByRestaurantIdRestaurantAndNameContainingIgnoreCase?restaurantId=${restaurantId}&name=${meal}&page=${nbrPage}&size=6`, {
+      headers: {
+        'Authorization': `Bearer ${JWT}`
+      }
+    })
   }
 
   const onRequestClose = () =>{
@@ -35,11 +35,17 @@ function Meals() {
   };
 
   useEffect(() => {
-    axios.get(`${BASE_URL}articles/search/findArticlesByRestaurantIdRestaurant?restaurantId=2&page=${nbrPage}&size=6`)
+    axios.get(`${BASE_URL}articles/search/findArticlesByRestaurantIdRestaurant?restaurantId=2&page=${nbrPage}&size=6`, {
+      headers: {
+        'Authorization': `Bearer ${JWT}`
+      }
+    })
       .then(response => {
         setTotalPage(response.data.page.totalPages);
         setTableData(response.data._embedded.articles);
+        console.log(response.data._embedded.articles);
       });
+      console.log("jwt : "+JWT);
 
       console.log("article : ",article);
   }, [nbrPage,deleteId,updateId]);

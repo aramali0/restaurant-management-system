@@ -1,15 +1,22 @@
 package RMS.entity;
 
+import RMS.Enums.UserRole;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
-@MappedSuperclass
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+import java.util.Collection;
+import java.util.List;
+
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 @Data
 @NoArgsConstructor
-public class Personne {
+public class Personne implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idPersonne;
@@ -17,12 +24,51 @@ public class Personne {
     private String email;
     private String motPass;
     private String numTelel;
+    private UserRole userRole;
+    private boolean status;
 
-    public Personne(String nomPersonne, String email, String motPass, String numTelel) {
+    public Personne(String nomPersonne, String email, String motPass, String numTelel,UserRole userRole,boolean status) {
         this.nomPersonne = nomPersonne;
         this.email = email;
         this.motPass = motPass;
         this.numTelel = numTelel;
+        this.userRole = userRole;
+        this.status = status;
     }
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority(userRole.name()));
+    }
+
+    @Override
+    public String getPassword() {
+        return motPass;
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return status;
+    }
 }

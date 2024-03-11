@@ -33,11 +33,20 @@ function App() {
 }
 }
 
+const JWT = JSON.parse(localStorage.getItem('JWT'));
+
 const [restaurant,setRestaurant] = useState(); 
 const idRestaurant = 2;
 useEffect(() => {
-  axios.get(owner._links.restaurant.href).then((response) =>{
+  console.log(JWT);
+  console.log(`Authorization: Bearer ${JWT}`);
+  axios.get(owner._links.restaurant.href, {
+    headers: {
+      'Authorization': `Bearer ${JWT}`
+    }
+  }).then((response) =>{
     setRestaurant(response.data);
+    console.log(response.data);
   });
 },[])
   
@@ -50,12 +59,12 @@ useEffect(() => {
             <Route path="/sinscrire" element={<SinscrirePage/>}/> 
             <Route path="owner" element={<Home restaurant={restaurant} />}>
               <Route index element={<DashBoard/>} />
-              <Route path='dashBoard' element={<DashBoard/>}/>
-              <Route path='commands' element={<Commands/>} />
-              <Route path='meals' element={<Meals/>} />
-              <Route path='clients' element={<Clients/>} />
-              <Route path='create' element={<CreateForm/>} />
-              <Route path='restaurant' element={<RestaurantPage restaurant={restaurant} />}/>
+              <Route path='dashBoard' element={<DashBoard JWT={JWT} />}/>
+              <Route path='commands' element={<Commands JWT={JWT} />} />
+              <Route path='meals' element={<Meals JWT={JWT}/>} />
+              <Route path='clients' element={<Clients JWT={JWT} />} />
+              <Route path='create' element={<CreateForm JWT={JWT} />} />
+              <Route path='restaurant' element={<RestaurantPage JWT={JWT} restaurant={restaurant} />}/>
             </Route> 
           </Routes>
       </BrowserRouter>
