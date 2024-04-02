@@ -4,15 +4,16 @@ import RMS.Enums.UserRole;
 import RMS.dao.*;
 import RMS.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 
 import java.util.ArrayList;
 import java.util.Date;
 
 @SpringBootApplication
-public class RestaurantManagementSystemApplication implements Runnable {
+public class RestaurantManagementSystemApplication implements CommandLineRunner {
 
 	public static void main(String[] args) {
 		SpringApplication.run(RestaurantManagementSystemApplication.class, args);
@@ -31,14 +32,16 @@ public class RestaurantManagementSystemApplication implements Runnable {
 	@Autowired
 	ArticleDAO articleDAO;
 
-	@Autowired
+
+
 
 
 	@Override
-	public void run() {
-		ProprietaireRestu p1 = new ProprietaireRestu("reem","reem@gmail.com",new BCryptPasswordEncoder().encode("admin"),"000000", UserRole.OWNER,
+	public void run(String... args) throws Exception {
+		System.out.println("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
+		ProprietaireRestu p1 = new ProprietaireRestu("reem","reem@gmail.com","123","000000", UserRole.ADMIN,
 				true,200);
-//		Client c1 = new Client("simo","simo@gmail.com","123","0605040303","2 pk");
+		Client c1 = new Client("simo","simo@gmail.com","123","0605040303", UserRole.USER,true,"2 pk");
 //		Client c6 = new Client("simo1","simo@gmail.com","123","0605040303","2 pk");
 //		Client c7 = new Client("simo2","simo@gmail.com","123","0605040303","2 pk");
 //		Client c8 = new Client("simo3","simo@gmail.com","123","0605040303","2 pk");
@@ -48,7 +51,7 @@ public class RestaurantManagementSystemApplication implements Runnable {
 //		Client c5 = new Client("reem","reem@gmail.com","123","900990909","04");
 //
 //
-//		clientDAO.save(c2);
+		clientDAO.save(c1);
 //		clientDAO.save(c3);
 //		clientDAO.save(c4);
 //		clientDAO.save(c1);
@@ -128,13 +131,13 @@ public class RestaurantManagementSystemApplication implements Runnable {
 		articles6.add(article12);
 //
 //
-////		Panier panier1 = new Panier(1L,10 ,c1, articles1);
+		Panier panier1 = new Panier(1L,10 ,c1, articles1);
 ////		Panier panier2 = new Panier(1L,15 ,c2, articles2);
 ////
-////		panierDAO.save(panier1);
+		panierDAO.save(panier1);
 ////		panierDAO.save(panier2);
 //
-//		Commande commande1 = new Commande(new Date(),c1,articles1,"Pending");
+		Commande commande1 = new Commande(new Date(),c1,articles1,"Pending");
 //		Commande commande2 = new Commande(new Date(),c2,articles2,"Delevred");
 //		Commande commande3 = new Commande(new Date(),c3,articles3,"Delevred");
 //		Commande commande4 = new Commande(new Date(),c4,articles4,"Delevred");
@@ -142,12 +145,11 @@ public class RestaurantManagementSystemApplication implements Runnable {
 //		Commande commande6 = new Commande(new Date(),c2,articles6,"Pending");
 //
 //
-//		commandeDAO.save(commande1);
+		commandeDAO.save(commande1);
 //		commandeDAO.save(commande2);
 //		commandeDAO.save(commande3);
 //		commandeDAO.save(commande4);
 //		commandeDAO.save(commande5);
 //		commandeDAO.save(commande6);
-
 	}
 }

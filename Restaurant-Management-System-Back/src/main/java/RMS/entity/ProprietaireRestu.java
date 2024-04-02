@@ -15,7 +15,7 @@ public class ProprietaireRestu extends Personne{
     @ManyToOne(cascade = CascadeType.ALL)
     private Restaurant restaurant;
 
-    public ProprietaireRestu(String nomPersonne, String email, String motPass, String numTelel, UserRole userRole, Boolean status,int payement)
+    public ProprietaireRestu(String nomPersonne, String email, String motPass, String numTelel, UserRole userRole, Boolean status, int payement)
     {
         super(nomPersonne,email,motPass,numTelel,userRole,status);
         this.payement = payement;

@@ -17,6 +17,7 @@ public class Article {
     private String name;
     private double prix;
     private String description;
+    @Enumerated(EnumType.STRING)
     private Categorie categorie;
     private int rating;
     @Lob

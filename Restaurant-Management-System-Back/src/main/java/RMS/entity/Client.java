@@ -21,7 +21,7 @@ public class Client extends Personne{
     @OneToOne(mappedBy = "client")
     Panier panier;
 
-    public Client(String nomPersonne, String email, String motPass, String numTelel, UserRole userRole,Boolean status,String address)
+    public Client(String nomPersonne, String email, String motPass, String numTelel, UserRole userRole, Boolean status, String address)
     {
         super(nomPersonne,email,motPass,numTelel,userRole,status);
         this.address = address;

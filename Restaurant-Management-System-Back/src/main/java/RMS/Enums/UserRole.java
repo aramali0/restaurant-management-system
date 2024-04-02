@@ -1,7 +1,8 @@
 package RMS.Enums;
 
 public enum UserRole {
+    USER,
     ADMIN,
-    CUSTOMER,
-    OWNER,
+    OWNERE,
+    CLIENT
 }

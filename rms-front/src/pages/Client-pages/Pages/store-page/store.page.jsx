@@ -68,7 +68,7 @@ function StorePage() {
             </div>
             { categorieSelected!='' ? <div className="store-meals">
                 {articles.map((meal,key)=>{
-                    return meal.categorie ===categorieSelected ?  <MealCard meal={meal} mealImage="src/assets/client-assets/restautant-images/meal1.jpg" />  : undefined ;
+                    return meal.categorie ===categorieSelected ?  <MealCard meal={meal} mealImage="/src/assets/client-assets/restautant-images/meal1.jpg" />  : undefined ;
                 })}
                 
             </div> : undefined }

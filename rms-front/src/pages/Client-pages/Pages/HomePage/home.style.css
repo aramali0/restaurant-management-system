@@ -28,13 +28,15 @@
     display: none;
 }
 
-.meals-items{
+
+.meals-items-otmane{
     margin-left: 20px;
     margin-top: 20px;
     display: flex;
     overflow: scroll;
 }
-.meals-items::-webkit-scrollbar{
+
+.meals-items-otmane::-webkit-scrollbar{
     display: none;
 }
 

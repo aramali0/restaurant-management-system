@@ -1,4 +1,4 @@
- const sideLinks = [
+const sideLinks = [
   {
     id: "dashBoard",
     title: "Dashboard",
@@ -32,6 +32,4 @@ const CATEGORIES = [
 
 const BASE_URL = "http://localhost:8080/api/";
 
-
-export  { CATEGORIES, BASE_URL, sideLinks };
-
+export { CATEGORIES, BASE_URL, sideLinks };

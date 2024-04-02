@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
-import CategoryCard from "../../../../components/Client Componenets/category-card/category.card";
-import './home.style.css'
-import RestaurantCard from "../../../../components/Client Componenets/restaurant-card/restaurant.card";
-import MealCard from "../../../../components/Client Componenets/meal-card/meal.card";
-import {CATEGORIES } from "../../../../constants";
 
+import './home.style.css'
+import { CATEGORIES } from "../../../../constants";
+import MealCard from "../../../../components//Client Componenets/meal-card/meal.card"
+import CategoryCard from "../../../../components/Client Componenets/category-card/category.card";
+import RestaurantCard from "../../../../components/Client Componenets/restaurant-card/restaurant.card";
 
 const categoriesColors = ["#a7f6b4","#f6c67e", "#e3a1a2", "#c69ee4","#acc9e7"]
 
-const basePathCat = "src/assets/client-assets/categories-images/"
+const basePathCat = "/src/assets/client-assets/categories-images/"
 export default function HomePage() {
+    
     const [categorySelected, setCategorySelected] = useState(0);
     const [restaurants, setRstaurants] = useState([]);
     const [mealsByCategory, setMealsByCategory]= useState([]);
@@ -74,18 +75,18 @@ export default function HomePage() {
             key = {key}
             restaurant={rest}
             restaurantRating={3.2}
-            rrstaurantImage="src/assets/client-assets/restautant-images/rest-brand.jpg"
-            restaurantCoverImage="src/assets/client-assets/restautant-images/rest-cover.jpg"
+            rrstaurantImage="/src/assets/client-assets/restautant-images/rest-brand.jpg"
+            restaurantCoverImage="/src/assets/client-assets/restautant-images/rest-cover.jpg"
             />;
         })
     }
     const displayMealsItems = ()=>{
         return meals.map((meal, key)=>{
-            return <MealCard 
+            return <MealCard
             meal={meal}
             key={key}
-            mealImage="src/assets/client-assets/restautant-images/meal1.jpg">
-            </MealCard>;
+            mealImage="/src/assets/client-assets/restautant-images/meal1.jpg"/>
+            ;
         })
     }
     const displaCategiries = ()=>{
@@ -94,7 +95,7 @@ export default function HomePage() {
             index >= categoriesColors.length ? index = 0 : undefined;
             index = index+1
             return <div onClick={()=>handleCategoryClicked(key+1)}>
-                    <CategoryCard  
+                    <CategoryCard
                         onTap={handleClick} 
                         categoryName={cat}
                         color={index<categoriesColors.length && index>=0 ?  categoriesColors[index] : categoriesColors[0]} 
@@ -107,10 +108,11 @@ export default function HomePage() {
     const displayMealsByCategoryName = (categpryName)=>{
         getMealsByCategory(categpryName);
         return mealsByCategory.map((meal, key)=>{
+            
             return  <MealCard 
             key={key}
             meal={meal}
-            mealImage={`src/assets/client-assets/restautant-images/meal1.jpg`}
+            mealImage={`/src/assets/client-assets/restautant-images/meal1.jpg`}
         />;
         })
     }
@@ -121,8 +123,9 @@ export default function HomePage() {
             }
         </div>
         {
+            
             CATEGORIES.map((cat,index)=>{
-                return categorySelected!==0 && categorySelected ===index+1 ? <div className="meals-items">{mealsByCatIsLoading ? "Is Loading" :displayMealsByCategoryName(cat)}</div> : undefined
+                return categorySelected!==0 && categorySelected ===index+1 ? <div className="meals-items-otmane">{mealsByCatIsLoading ? "Is Loading" :displayMealsByCategoryName(cat)}</div> : undefined
             })
     }
         <h1 className="main-title">Restaurants</h1>
@@ -132,12 +135,11 @@ export default function HomePage() {
                 {
                     restIsLoading ? "Is Loading"  : displayRestaurantItem()
                 }
-                
             </div>
         </div>
         <div className="meals">
             <div className="title">Speacial for you</div>
-            <div className="meals-items">
+            <div className="meals-items-otmane">
                 {
                     mealsLoading ? "Meals Loading" :  displayMealsItems()
                 }
