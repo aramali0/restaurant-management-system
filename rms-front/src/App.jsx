@@ -11,6 +11,15 @@ import RestaurantPage from './pages/owner-page/restaurant/RestaurantPage';
 import LoginPage from './pages/owner-page/login/LoginPage';
 import Sinscrire from './components/owner-page/sinscrire/Sinscrire';
 import SinscrirePage from './pages/owner-page/sinscrire/SinscrirePage';
+import AppClient from './pages/Client-pages/ClientApp';
+import LayouClient from './pages/Client-pages/Pages/Layout/layout';
+import HomePage from './pages/Client-pages/Pages/HomePage/home.page';
+import MealDetails from './pages/Client-pages/Pages/mealdetails/mealdetails.page';
+import StorePage from './pages/Client-pages/Pages/store-page/store.page';
+import CartPage from './pages/Client-pages/Pages/Cart Page/cart.page';
+import ContactPage from './pages/Client-pages/Pages/ContactPage/contact.page';
+import AboutPage from './pages/Client-pages/Pages/AboutPage/about.page';
+import ProfilePage from './pages/Client-pages/Pages/ProfilePage/profile.lpage';
 
 function App() {
   
@@ -65,7 +74,18 @@ useEffect(() => {
               <Route path='clients' element={<Clients JWT={JWT} />} />
               <Route path='create' element={<CreateForm JWT={JWT} />} />
               <Route path='restaurant' element={<RestaurantPage JWT={JWT} restaurant={restaurant} />}/>
-            </Route> 
+            </Route>
+            
+            <Route path="client" element={<LayouClient/>}>
+                    <Route index element={<HomePage/>} />
+                    <Route path="home" element={<HomePage/>}></Route>
+                    <Route path="detailspage"  element={<MealDetails/>}></Route>
+                    <Route path="store-page" element={<StorePage/>}></Route>
+                    <Route path="cart" element={<CartPage/>}></Route>
+                    <Route path="contact" element={<ContactPage/>}></Route>
+                    <Route path="about" element={<AboutPage/>}></Route>
+                    <Route path="profile" element={<ProfilePage/>}></Route>
+            </Route>
           </Routes>
       </BrowserRouter>
     </>

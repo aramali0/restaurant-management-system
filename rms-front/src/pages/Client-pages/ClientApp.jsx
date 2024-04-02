@@ -10,10 +10,9 @@ import { useState } from "react";
 import CartPage from "./Pages/Cart Page/cart.page";
 
 function AppClient() {
-    return ( <>
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<LayouClient></LayouClient>}>
+    return ( 
+        
+                <Route path="/client" element={<LayouClient></LayouClient>}>
                     <Route path="/home" element={<HomePage></HomePage>}></Route>
                     <Route path="/detailspage"  element={<MealDetails></MealDetails>}></Route>
                     <Route path="/store-page" element={<StorePage></StorePage>}></Route>
@@ -22,9 +21,8 @@ function AppClient() {
                     <Route path="/about" element={<AboutPage></AboutPage>}></Route>
                     <Route path="/profile" element={<ProfilePage></ProfilePage>}></Route>
                 </Route>
-            </Routes>
-        </BrowserRouter>
-    </> );
+           
+    );
 }
 
 export default AppClient;

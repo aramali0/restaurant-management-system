@@ -46,7 +46,7 @@ function CartPage() {
     const handleRemoveArticleFromPanier = (idArticle)=>{
         if(!isNaN(idArticle)){
             fetch(`http://localhost:8080/api-c/paniers/panier/${idArticle}/${currentPanierId}`,
-                {method: 'DELETE', body:{}}
+                {method: 'DELETE', body:{}, }
             )
             setMessage(prevState =>{
                 return "Item deleted succesfully !"
@@ -67,13 +67,11 @@ function CartPage() {
             return [...tab];
         })
     }
+    
     const handleOrderNow = ()=>{
         fetch(
             "http://localhost:8080/api/commandes", 
             {
-                headers: {
-                    'Content-Type': 'application/json',
-                },
                 method : "POST", 
                 body : JSON.stringify({
                     date: (new Date()).toISOString(),
@@ -91,6 +89,8 @@ function CartPage() {
                             `http://localhost:8080/api-c/commandes/commande/${article.idArticle}/${idCommande}`, 
                             {
                                 method : "POST",
+                                
+                                  
                             }
                             ).then((result) => {
                                 console.log((result));
@@ -140,7 +140,7 @@ function CartPage() {
                             articles.map((article,key)=>{
                                 return <tr>
                                 <td className='article-details'>
-                                    <div className='article-image'><img width src="src/assets/client-assets/restautant-images/meal1.jpg" alt="article-image" /></div>
+                                    <div className='article-image'><img width src="/src/assets/client-assets/restautant-images/meal1.jpg" alt="article-image" /></div>
                                     <div className='article-info'>
                                         <div className='article-name'>{article.name}</div>
                                         <div className='categorie'>{article.categorie}</div>
@@ -156,7 +156,7 @@ function CartPage() {
                     </tbody>
                 </table>
                 </div>
-                <div className='go-back' onClick={()=> {navigat("/home")}} >
+                <div className='go-back' onClick={()=> {navigat("/client/home")}} >
                     <IoMdArrowRoundBack className='back-btn' />
                     <span>Continue Shoping</span>
                 </div>
@@ -169,7 +169,7 @@ function CartPage() {
                     <div className='price'>{totalPrice}$</div>
                 </div>
                 <div className='aditional-info'>
-                    <div>PROMO CODE:</div>
+                    <div>PROMO CODE:<span>(optional)</span></div>
                     <input type="text" placeholder="Your promo code ... " />
                     <button>APPLY</button>
                 </div>

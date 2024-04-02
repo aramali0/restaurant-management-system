@@ -30,7 +30,6 @@ function Clients() {
         setTotalPage(response.data.page.totalPages);
         setTableData(response.data._embedded.clients);
         console.log(response.data._embedded.clients);
-
       });
   }, [nbrPage]);
 

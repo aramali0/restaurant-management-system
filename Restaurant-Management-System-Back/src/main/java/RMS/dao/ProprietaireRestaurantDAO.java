@@ -1,14 +1,10 @@
 package RMS.dao;
 
 import RMS.Enums.UserRole;
-import RMS.entity.Client;
-import RMS.entity.Personne;
 import RMS.entity.ProprietaireRestu;
-import RMS.entity.Restaurant;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Optional;
 

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 function MealCard({meal, mealImage, key}) {
     const navigate = useNavigate()
-    return (<div onClick={()=>{navigate("/detailspage", {state : {meal : meal, image : [mealImage]}})}} className="meal-card" key={key}>
+    return (<div onClick={()=>{navigate("/client/detailspage", {state : {meal : meal, image : [mealImage]}})}} className="meal-card" key={key}>
         <div className="meal-image"><img className="meal-img-src" src={mealImage} /></div>
         <div className="meal-info">
             <div className="meal-name">{meal.name}</div>
