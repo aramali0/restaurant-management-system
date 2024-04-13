@@ -29,7 +29,7 @@ function DashBoard() {
 
         const today = new Date().toISOString().split('T')[0];
         const yesterday = new Date(new Date().setDate(new Date().getDate() - 1)).toISOString().split('T')[0];
-        const thisWeek = ''; // Add logic to get the start date of the week
+        const thisWeek = ''; 
         const thisMonth = new Date().toISOString().split('-').slice(0, 2).join('-');
 
         const todayCommandes = commandesData.filter(commande => commande.date.includes(today));
